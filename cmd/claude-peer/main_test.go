@@ -3,7 +3,7 @@
 package main
 
 import (
-	"github.com/antst/sessionbus-peers/wrappers/claude/interactive"
+	"github.com/sessionbus/claude-peer/wrappers/claude/interactive"
 	"testing"
 )
 

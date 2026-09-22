@@ -4,7 +4,7 @@ package interactive
 import (
 	"context"
 	"encoding/json"
-	"github.com/antst/sessionbus-peers/wrappers/mcp"
+	"github.com/sessionbus/peer-common/mcp"
 )
 
 func Tool() any { return mcp.Tool() }

@@ -8,8 +8,8 @@ import (
 	"io"
 	"net"
 
-	"github.com/antst/sessionbus-peers/wrappers/host"
 	kit "github.com/antst/sessionbus/bus/sdk/go"
+	"github.com/sessionbus/peer-common/host"
 )
 
 type Recipient struct {

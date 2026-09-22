@@ -8,10 +8,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/antst/sessionbus-peers/internal/peerversion"
-	"github.com/antst/sessionbus-peers/wrappers/claude"
-	"github.com/antst/sessionbus-peers/wrappers/claude/interactive"
 	kit "github.com/antst/sessionbus/bus/sdk/go"
+	"github.com/sessionbus/claude-peer/wrappers/claude"
+	"github.com/sessionbus/claude-peer/wrappers/claude/interactive"
+	"github.com/sessionbus/peer-common/peerversion"
 )
 
 func main() {

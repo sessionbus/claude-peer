@@ -12,8 +12,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/antst/sessionbus-peers/wrappers/claude/interactive"
 	kit "github.com/antst/sessionbus/bus/sdk/go"
+	"github.com/sessionbus/claude-peer/wrappers/claude/interactive"
 )
 
 func endpointFixture(t *testing.T) (*Wrapper, *laneEndpoint) {
