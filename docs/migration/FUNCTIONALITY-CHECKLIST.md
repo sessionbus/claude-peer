@@ -4,10 +4,12 @@ Baseline: original peers main `710e5d33369cba4fb9468cd24fea0fe844a0219d`.
 The F01–F20 requirement IDs are shared with the migration checklist. Product
 semantics and known limitations stay explicit; a failed check does not remove a
 requirement. Extraction source preservation and fresh installed behavior are
-separate evidence. Current status: source preservation, independent review, hosted CI, permanent
-installation/reinstallation and four fresh wake surfaces are accepted. The
-installed acceptance below records the retrospective assessments and the original
-test-driver failures separately.
+separate evidence. Source preservation, independent review, hosted CI and permanent
+installation/reinstallation passed. Four wake exchanges were accepted through
+retrospective assessments; none of their original automated drivers completed
+successfully. Baseline communication regressions and clean automated wake
+acceptance are reopened in the [regression recovery record](REGRESSION-RECOVERY.md).
+The installed evidence below remains valid with its original limitations.
 
 | ID | Preserved functionality | Existing regression coverage | Installed evidence / limit |
 |---|---|---|---|
@@ -134,7 +136,10 @@ preserved all JSON values; the writer remains unknown. G's separate presence
 correction preserves the observed public session without claiming a completed
 setup.
 
-This closes F11–F14 on the installed Linux artifact. Source/test preservation
-supports the remaining requirements; four wake cells do not claim fresh native
-coverage of every lifecycle path, platform, permission mode or update. No native
-version allowlist, product redesign or release is introduced.
+These retrospective assessments establish the four observed wake exchanges on
+the installed Linux artifact. They do not close clean automated acceptance of
+F11–F14, or replace the earlier explicit communication regression scenarios.
+Source preservation is measured against the extraction baseline, which already
+contained changes absent from the prior UMKA installation. Fresh coverage of
+every lifecycle path, platform, permission mode or update is not claimed. No
+native version allowlist, product redesign or release is introduced.

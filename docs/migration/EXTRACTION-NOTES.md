@@ -8,7 +8,8 @@ argument and permission handling, install layout and private aliases remain.
 The frozen inventory accounts for 64 protected files and 133 original Go test
 functions. Forty-seven files remain byte-identical; sixteen Go files change only
 module imports and gofmt, and `claude/README.md` changes its bootstrap URL.
-Product runtime contains no behavior change. Shared host/MCP/version/socket
+Relative to baseline `710e5d3`, product runtime contains no behavior change.
+This comparison is not against the previous UMKA installation. Shared host/MCP/version/socket
 support resolves to `github.com/sessionbus/peer-common` at the reviewed immutable
 version `v0.0.0-20260922143100-eb655f686e44`, with no replace or alternate workspace.
 The exact common code/tests preserve their original behavior. The linker stamps
@@ -44,9 +45,12 @@ The assessment process made no model calls or product changes. Native versions
 No release, tag or version bump accompanies this extraction.
 
 The previous UMKA a1af0c wrapper predated the merged 6b4836 mandatory-wake fix.
-This extraction preserves 6b4836 from the 710e baseline and validates the newly
-installed ff8471 artifact. Earlier explicit communication passes were not reused
-as fresh automatic-wake acceptance. The obsolete b6fb0e6 Node portability branch
+The installed update therefore included a real managed-delivery change: native
+append was replaced by pre-submission deferral and a daemon-seeded delivery run.
+The extraction preserves that change from the 710e baseline. Earlier explicit
+communication passes were neither fresh automatic-wake acceptance nor a fresh
+regression pass on ff8471. The [recovery record](REGRESSION-RECOVERY.md) tracks
+old-to-current coverage and clean automated acceptance separately. The obsolete b6fb0e6 Node portability branch
 remains archived on the original Codex repository; it was not cherry-picked into
 the Go implementation.
 
