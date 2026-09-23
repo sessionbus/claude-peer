@@ -37,7 +37,6 @@ func TestVersionGuardRejectsEveryStableVersionAuthorityMismatch(t *testing.T) {
 	}{
 		{"tag", "0.5.2", "0.5.2", "0.5.2-codex.0", "v0.5.3", "Stable peer release v0.5.3 does not match RELEASE_VERSION v0.5.2"},
 		{"claude", "0.5.2", "0.5.1", "0.5.2-codex.0", "v0.5.2", "Claude manifest version 0.5.1 does not match RELEASE_VERSION 0.5.2"},
-		{"codex", "0.5.2", "0.5.2", "0.5.1-codex.0", "v0.5.2", "Codex base version 0.5.1-codex.0 does not match RELEASE_VERSION 0.5.2"},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {

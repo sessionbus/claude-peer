@@ -1,0 +1,903 @@
+{
+  "source": "710e5d33369cba4fb9468cd24fea0fe844a0219d",
+  "status": "frozen before editing",
+  "files": [
+    {
+      "path": "claude/.claude-plugin/plugin.json",
+      "sha256": "a64689302f382002e1eeaa7bbcb6bbf7d4397683a37c140ee4a34a1fe0b08f36",
+      "git_blob": "763b1879fcac1b679e43634b9357dbf021b7592f",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "claude/.claude-plugin/plugin.json"
+      }
+    },
+    {
+      "path": "claude/.mcp.json",
+      "sha256": "91d631cbbe6c34d5af24d88cd596e2951820ee77deb1bcc3ca6937ec6143920e",
+      "git_blob": "669458e91880798692d6109ad8aa57751e4a64b1",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "claude/.mcp.json"
+      }
+    },
+    {
+      "path": "claude/README.md",
+      "sha256": "aee89715e9f0459ba2c7d72604ff62912421ba56be9492095f1a1f02b4d6dec3",
+      "git_blob": "e6e5e747376e4f88d77b7b23887525871b5ff886",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "claude/README.md"
+      }
+    },
+    {
+      "path": "claude/commands/doctor.md",
+      "sha256": "a0f63b32b4b5e95aa1abaff510982327ffdc1b80b314dee4c20f243c19b28184",
+      "git_blob": "e6ef46ff1351e1d8f814c81920189339f6c3abe1",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "claude/commands/doctor.md"
+      }
+    },
+    {
+      "path": "claude/hooks/hooks.json",
+      "sha256": "e4f0a721bf68965609609a0b75ffaf0915595009812bb6dbf44a87d192d84d35",
+      "git_blob": "a3c244b9e22b434bb3fca36e086795828630d698",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "claude/hooks/hooks.json"
+      }
+    },
+    {
+      "path": "claude/install",
+      "sha256": "7ac63ba4f4f662b656224a08607f039f5dce1b987cdbc9d712e4f844304dd1b7",
+      "git_blob": "9640d31bd4b257ac33cd054f0a75a52000a30159",
+      "mode": "100755",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "claude/install"
+      }
+    },
+    {
+      "path": "claude/skills/sessionbus/SKILL.md",
+      "sha256": "75f84d704092f49e3bfac645dfd3f4b13ecba2f659589b7618203798ea08c249",
+      "git_blob": "fce7b1335a19e642183c202c2a77c267d64ff5a3",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "claude/skills/sessionbus/SKILL.md"
+      }
+    },
+    {
+      "path": "cmd/claude-peer/main.go",
+      "sha256": "800a46444b46585f4b9f455e5429533e3177dc93e8fd04a22bf92fe10f08e7b1",
+      "git_blob": "189b18e55bd43b1bafc2eae577d27e84d5f4ad85",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "cmd/claude-peer/main.go"
+      }
+    },
+    {
+      "path": "cmd/claude-peer/main_test.go",
+      "sha256": "cf8a7aecebe14893727f2d05aa936145d9dc40e71a38b30dc1118328ce45efe2",
+      "git_blob": "8277aef2dfb014f5d3ec3cda67aafacd31f6d83c",
+      "mode": "100644",
+      "test_functions": [
+        "TestTokenModeNeverFallsThroughToInteractive"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "cmd/claude-peer/main_test.go"
+      }
+    },
+    {
+      "path": "internal/peerversion/version.go",
+      "sha256": "eba3a70af92bd7c53ca78422fc96b6b223c1cd81eca72a09430499a042982d2d",
+      "git_blob": "4026bc9e7e5b20ca11ffe6b8fdab54714960ecae",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "peerversion/version.go"
+      }
+    },
+    {
+      "path": "internal/peerversion/version_test.go",
+      "sha256": "10e619661cebe9dd7ac3c34e9d60a57ecf76cd48b1334cc501499968a1817aee",
+      "git_blob": "8e04c0a6a2cb608ae3d47c502793248538d88a93",
+      "mode": "100644",
+      "test_functions": [
+        "TestResolvePublicVersionAndNativeEscape",
+        "TestResolveKeepsPrivateAndNonExactArguments"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "peerversion/version_test.go"
+      }
+    },
+    {
+      "path": "internal/testsocket/directory.go",
+      "sha256": "373cdb0e9219c4235ff88dc11a30987bec1725939a6e02df58087adf00ce74c0",
+      "git_blob": "9268dbbaf3b13ffbeb8efc4b5eb9c5befb350bd8",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "testsocket/directory.go"
+      }
+    },
+    {
+      "path": "internal/testsocket/directory_test.go",
+      "sha256": "6e40eed060759a1eaf1cac5e552bed9113e5e5e28e0132e597ce16a741e696dc",
+      "git_blob": "bb34848ac0b2c594ec75ad56ddc338e4b714f260",
+      "mode": "100644",
+      "test_functions": [
+        "TestDirectoryUsesDefaultSessionSocketParent",
+        "TestDirectoryResolvesSymlinkBeforeBindingSocket"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "testsocket/directory_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/claude.go",
+      "sha256": "c498f83e3e6894802982ef87b254ed298a566b7740824bda7831debb53f5cfb9",
+      "git_blob": "eb84366c18ca93c12a3b8a8d94ca24501984dae0",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/claude.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/claude_test.go",
+      "sha256": "009e03575087fcd21171bb28482267cdde489f913ab54f9a6d646b911d5fcf75",
+      "git_blob": "400e61a79e5ab3c038a3681e0560764d11a666c3",
+      "mode": "100644",
+      "test_functions": [
+        "TestNativeArgumentsPreserveCallerSuffix",
+        "TestNativeArgumentsKeepGrantWithBypass",
+        "TestOpenRejectsManagedToolDenyBeforeLifetime",
+        "TestRequiredToolsNeedsConnectedPresence",
+        "TestFailedOpenRemovesItsEndpoint",
+        "TestWorkerHelloUsesActualProtocolSchema",
+        "TestOpenTitleRequiresNativeConfirmation",
+        "TestWorkerPublishesTerminalReadyBeforeNativeEOFShutdown",
+        "TestNativeLifetimeStartupCancellationAndCommit",
+        "TestNativeLifetimeFixture",
+        "TestRealWorkerNormalCloseKeepsNativeLifetimeUntilExit"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/claude_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/alias_values_test.go",
+      "sha256": "5bd5bacdf293cbcdb4ef937d98cefc9d558e1c0601867fac7fc42c4304b0b79c",
+      "git_blob": "3f39141b3ffd450cc5521452042c06b5db1fc8a7",
+      "mode": "100644",
+      "test_functions": [
+        "TestAliasTokensRemainRequiredNativeValues",
+        "TestAliasNativeValueBoundaries"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/alias_values_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/delivery.go",
+      "sha256": "7a111ce548c9009b67cb7cb6f96e6f2c482160cb572a4a8fd91bf04bf0385f7c",
+      "git_blob": "94fe4737d1c1b07bf1c35cc1e806a6e3d9b3da3b",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/delivery.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/delivery_test.go",
+      "sha256": "6736cd9ed9de30a29126534598ef38e147a83f6110fe5ee7f823c99c1a29590a",
+      "git_blob": "cd441c5404d80136b4f639814f8ba1fa9df70d94",
+      "mode": "100644",
+      "test_functions": [
+        "TestNativeWriteCapturesExactFrameAndCloses",
+        "TestNativePreSubmissionAndUncertainBoundaries"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/delivery_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/install_test.go",
+      "sha256": "7af6751857cc0e4beb3165e143de2654baa79fedca581e56cc345a1aa96f6884",
+      "git_blob": "27ffc7a515bc18c00a13633f3803664b587051a9",
+      "mode": "100644",
+      "test_functions": [
+        "TestInstalledArchiveExecAndPrivateMCP"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/install_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/launch.go",
+      "sha256": "de82664ca4d2d4e061b5720a56440e23678f42f9be339f214dfc9cb5b3568bb6",
+      "git_blob": "774e598da781684de550879148dd2626dca73754",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/launch.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/launch_test.go",
+      "sha256": "49cbc3c2160a3c7e7b9c6b2334bbd6af7020a9e2a9fb087760c87a7aee994b8a",
+      "git_blob": "86af7ae6c9ca10046f72804401ed47dc6ab1d866",
+      "mode": "100644",
+      "test_functions": [
+        "TestLaunchPreservesNativeArgumentsAndGroupGrammar",
+        "TestLaunchRejectsMissingGroupValueBeforeNativeBoundary",
+        "TestNativeLookupAndSocketResolution"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/launch_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/mcp.go",
+      "sha256": "d0049a38da1160dc59da266ec6a5d2885e8c5d430f738d78d7e0da37aa0b8128",
+      "git_blob": "75fa3cb740f323f841f6821c6d53399e21c53e48",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/mcp.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/mcp_test.go",
+      "sha256": "7e923b0b730e16fa92f408fe74899bebc8d59f3f733f22e10e4ba2218114b54b",
+      "git_blob": "b0c6204b4d59b3677a05e8ff627c0b9045a91fde",
+      "mode": "100644",
+      "test_functions": [
+        "TestCancelledMCPWaitPreservesActualCallerResult",
+        "TestFulfilledWaitKeepsResponseAfterLateCancellation",
+        "TestMCPProtocolHiddenReportAndEOF",
+        "TestOutputFailureEndsOwnerAndUnblocksInput",
+        "TestMCPRejectsNullVersionAndMalformedFrames",
+        "TestPublishedMCPWithPendingCallerSettlesOnEOF",
+        "TestSubmittedMCPAckKeepsResponseAfterCancellation"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/mcp_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/owner.go",
+      "sha256": "7acb3ed801719543aba686c3e318b76b5eddb152ed5756bd4c167496f43ab805",
+      "git_blob": "974a971b4ebac53176eb3e17e70def88e48b946d",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/owner.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/owner_test.go",
+      "sha256": "9835cc9d45b976943a1c3b9b6bf09e501781362ab83b958122b5f074759040c7",
+      "git_blob": "6916e09e30e8306e347387a4f292f4bc56fd372c",
+      "mode": "100644",
+      "test_functions": [
+        "TestNativeReportPublicationRenameAndWithdrawal",
+        "TestHelloObserverCapturesIdentityBeforeImmediateDelivery",
+        "TestLateHelloCannotReviveWithdrawnOwner",
+        "TestUnexpectedLossReconnectsLatestExactIdentity",
+        "TestStartupDaemonAbsentRecoversWithoutAnotherNativeReport",
+        "TestLostInFlightCallIsNotReplayedAfterReconnect",
+        "TestOldDeliveryCompletionCannotRetireReplacementConnection",
+        "TestSupersessionIsTerminalAndJoinsPublisher",
+        "TestSupersessionHeldAckIsCanceledAndJoinedByEnd",
+        "TestInvalidHelloIsTerminalAndDoesNotRetry",
+        "TestPendingNativeReportObserversAreBounded",
+        "TestCancelledWireCallDrainsLateReplyAndKeepsIntegration"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/owner_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/permissions.go",
+      "sha256": "5b16cf508db334e60c0c18e3c3ca31bcd7207bcb750fefd1f8f6b4ce2cdfdc37",
+      "git_blob": "4382f12cefc838fed00c2a0ec55ef005b85f3ef8",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/permissions.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/permissions_test.go",
+      "sha256": "e5a77e1c8071c89a2c8205cead3f7b8f5c9e48568c0058075e68cf6a4abe4583",
+      "git_blob": "d9f885409225879f1045b13ae0f6864ed6492768",
+      "mode": "100644",
+      "test_functions": [
+        "TestManagedToolRejectsExactNativeDeny",
+        "TestManagedToolPreservesOtherNativePolicyAndBoundaries",
+        "TestManagedToolRuleSplitterMatchesNativeLists",
+        "TestInteractiveGuardUsesProjectedNativeArguments",
+        "TestManagedToolGuardPreservesCurrentNativeRequiredValues"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/permissions_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/startup.go",
+      "sha256": "b9c050fa4faaaa84352cd075301d7212d8379457836798bde5b1efa04e499f96",
+      "git_blob": "7102c6fd5bb67e8eaf727d844b1855efd468fd08",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/startup.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/startup_darwin.go",
+      "sha256": "477a933366c38f9217a63ce92fb427eb1221d55283db7e444d8c2dc736b4e0fa",
+      "git_blob": "8a0b96a6d4447a72caa45f99fe2aa1146394048a",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/startup_darwin.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/startup_linux.go",
+      "sha256": "f91f4cd536382f9daef242486067a65a3226fc37bf9d1459da4a2d4b25d3d15c",
+      "git_blob": "13a028a25eb72acf079735c1ebdf640b444d1219",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/startup_linux.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/startup_test.go",
+      "sha256": "cf54d945f943cc781d647e3116af8e63da7fa75fa632eecd5e9e32bbc912f376",
+      "git_blob": "fc6d0c8acda4d114aff76e50dd0f2c3916162417",
+      "mode": "100644",
+      "test_functions": [
+        "TestStartupPublishesWithoutHookAndFollowsNativeName",
+        "TestStartupReadCannotCrossNativeHookOrEnd",
+        "TestStartupParentLossWithdrawsAndCannotRepublish",
+        "TestStartupRegistryOwnProcessAndBoundedNativeFile",
+        "TestStartupRegistryMatchesActualProcessGeneration"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/startup_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/tools.go",
+      "sha256": "c49fecf59f233bbf004e6217660964a85a4d95bcaaf1a0afc754ccd2fc9c8ed6",
+      "git_blob": "9020dd97babb79c393c07972a7987cfb37d54c19",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/tools.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/tools_test.go",
+      "sha256": "976f34811a4d4cf0707a66d0b0a340f4962ea66ef4dce888526537a4533ae9a1",
+      "git_blob": "178e35f9e19c7df2136c448cfbd860fde5a9fad0",
+      "mode": "100644",
+      "test_functions": [
+        "TestPublicActionsUseActualConnectionAndSchema",
+        "TestInvalidSendAndSpawnNeverReachWire"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/tools_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/interactive/transport_test.go",
+      "sha256": "20244f351c35eacab5d5c839d5e18aa168acf31f31018a06c7d550645fc4ccc9",
+      "git_blob": "69e72613b3064d3bfb0153d27024b865f04550d1",
+      "mode": "100644",
+      "test_functions": [
+        "TestServeEOFAndEndCancelBlockedTransport",
+        "TestNewestUnsubmittedReportSurvivesOverlappingDial",
+        "TestSubmittedOldHelloCannotFollowNewHello"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/interactive/transport_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/lane_endpoint.go",
+      "sha256": "2e387f3255c9ec8943f171ff8b88548aa46c39aa2ac4c2f2800ed97d4349f17f",
+      "git_blob": "422d0ba4115011e8ece61d2617be7b84fb88cfe7",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/lane_endpoint.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/lane_endpoint_test.go",
+      "sha256": "e39d016ef6436d22b53cf2d7fbfe9cdc1d79a2448579bbdf914c478bfd0b59fb",
+      "git_blob": "38d4ea96a4a0dcb4e4ab915ff53c128fa8992067",
+      "mode": "100644",
+      "test_functions": [
+        "TestInitialReportBindsEmitterAndTransientClose",
+        "TestEstablishedForwarderEOFEndsWorker",
+        "TestForwardUsesExistingMCPAndClosesOnStdioEOF",
+        "TestInitialHookRequiresNativeEmitterAndRootFields",
+        "TestExplicitInteractiveLaunchDropsInheritedLaneEndpoint",
+        "TestCommonHookPayloadUsesAcceptedPlaceholderRules"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/lane_endpoint_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/stream.go",
+      "sha256": "f23b8fa643fa3ec57762018610ffd78ec41552b1f43cac0ced06627eb26cfdf7",
+      "git_blob": "78695b66806753f3dcfb279127b2976ca78f3901",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/stream.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/stream_test.go",
+      "sha256": "21ba547a2513038ea975f8b81ee679bd0ad6ad5364fc1714ad48e1df3cc2cb8f",
+      "git_blob": "82803cca003a8eba3da8d481407799ef8380c89b",
+      "mode": "100644",
+      "test_functions": [
+        "TestRunRequiresMatchingReplayAndTerminal",
+        "TestNativeErrorAndInterruptReasons",
+        "TestCancellationClosesBlockedNativeWrite",
+        "TestProcessExitBeforeReaderPreservesBufferedTerminal",
+        "TestCanceledInterruptResponseWaitKeepsLaneTransport",
+        "TestFailedWriteWithCancellationAlwaysRetiresTransport",
+        "TestPreCancelledWriteDoesNotSubmitOrRetire",
+        "TestLaneDeliveryDefersBeforeAnyNativeWrite"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/stream_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/wake_test.go",
+      "sha256": "b98fd647dc310ca46828c8fcea902628606574a9610325d59db7416d9ce0e17f",
+      "git_blob": "47655f07cfebcdb39f4ac9c749be108c73a8d907",
+      "mode": "100644",
+      "test_functions": [
+        "TestWakeReplayFixesReceiptWhileTerminalDrains",
+        "TestWakeReceiptTransportFailureRetiresNativeStream",
+        "TestWakeWithoutReplayPreservesSubmissionUncertainty"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/wake_test.go"
+      }
+    },
+    {
+      "path": "wrappers/claude/wake_worker_test.go",
+      "sha256": "69c714499c3b10dd6698391a62db52e0864b53307e8593d3e758c75d9ebffd77",
+      "git_blob": "516462e3e04fddffea64cd900fb57191eccd4a29",
+      "mode": "100644",
+      "test_functions": [
+        "TestActualWorkerWakeReceiptTerminalAndBusLoss"
+      ],
+      "current_location": {
+        "repository": "sessionbus/claude-peer",
+        "path": "wrappers/claude/wake_worker_test.go"
+      }
+    },
+    {
+      "path": "wrappers/host/endpoint.go",
+      "sha256": "dada1a15bdf425e18e844d67e609b446d22622d5ca7c81b24aeb23a9a2fca832",
+      "git_blob": "41c9766efc10dbfabf3719c8082c08539d746aa1",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/endpoint.go"
+      }
+    },
+    {
+      "path": "wrappers/host/endpoint_test.go",
+      "sha256": "9ec9fe16cc432a6e2feda44a65dcf7086fd58117afc84fae4e7e7f26cffa2a9e",
+      "git_blob": "299f437249ad46a867d8419a001acac6ae238a45",
+      "mode": "100644",
+      "test_functions": [
+        "TestPrivateEndpointBridgeCancel",
+        "TestPrivateEndpointReplacesStalePath"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/endpoint_test.go"
+      }
+    },
+    {
+      "path": "wrappers/host/handoff.go",
+      "sha256": "8385aa6586d3c66a21220ea360e94b51191a9c221e217a929fe9628155026a92",
+      "git_blob": "56218b2864778817c2ff2b060e8f2c85c72bf103",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/handoff.go"
+      }
+    },
+    {
+      "path": "wrappers/host/handoff_test.go",
+      "sha256": "eb32e0ecab777c3dba61957283bc2682f69d59c73b39f1f0f2377761d404a183",
+      "git_blob": "e24850651da06964cd368d646985a1d79122ab0d",
+      "mode": "100644",
+      "test_functions": [
+        "TestHandoffDeliveryAndQueueCommit",
+        "TestHandoffFailedCreationKeepsFullQueue",
+        "TestHandoffFailedCreationRestoresPendingDelivery",
+        "TestHandoffFailedCreationPreservesAdmissionOrder",
+        "TestHandoffClaimAndFinish",
+        "TestHandoffClaimableDeliveryReportsQueuedAcrossTerminal",
+        "TestHandoffSDKInterruptCrossings"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/handoff_test.go"
+      }
+    },
+    {
+      "path": "wrappers/host/launch.go",
+      "sha256": "02c82ac348716cab696449539804c754e0b082302f6c652bcd54cfdb3161c8f9",
+      "git_blob": "0a1566c99ac1b5ec2c8822e63783d085e505f1da",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/launch.go"
+      }
+    },
+    {
+      "path": "wrappers/host/launch_test.go",
+      "sha256": "266be8c8599bab982a46a69652f46e1433558ba89b966db1f25bdeac8700dff4",
+      "git_blob": "0f2e983a3ba59bb3971dd1807ff546b54940b915",
+      "mode": "100644",
+      "test_functions": [
+        "TestLaneModeUsesTokenPresence",
+        "TestLaunchTokenDigestLength",
+        "TestInteractivePlan",
+        "TestInteractivePlanErrors",
+        "TestClassifiedInteractivePlanDefersProjectionErrors",
+        "TestBuildArgumentsTable",
+        "TestChildOwnershipTable",
+        "TestOwnedChildHelper",
+        "TestChildCloseIgnoresStoppedProcessNoise",
+        "TestChildOutputDrainsAfterExit"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/launch_test.go"
+      }
+    },
+    {
+      "path": "wrappers/host/lock.go",
+      "sha256": "84159d31dc79d3a506d532e35cbe1cfdf99ea5e74784bacbff84221c6c0e5d12",
+      "git_blob": "9e31828c1ef4e02cd36d66a6f71705a035903fed",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/lock.go"
+      }
+    },
+    {
+      "path": "wrappers/host/lock_test.go",
+      "sha256": "8a252811f328812037f66403e7735716f4806ac4ef420734127a93561dc30d97",
+      "git_blob": "1e2e1053c527451965954653bc8a0b563db81c5b",
+      "mode": "100644",
+      "test_functions": [
+        "TestSessionLockStaleFileAndContention",
+        "TestSessionLockRenamePreservesClaim",
+        "TestSessionLockOrderlyCloseAllowsResume",
+        "TestSessionLockRenameRecoversCrashStaleTarget",
+        "TestSessionLockRenameRetriesInodeMismatch",
+        "TestSessionLockRenamePreservesRecreatedTarget",
+        "TestSessionLockRenameDoesNotReplaceHolder"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/lock_test.go"
+      }
+    },
+    {
+      "path": "wrappers/host/not_running.go",
+      "sha256": "65dd0e7a37acec2da346627869309af268d6c5b68b5452a586d5bf1e240e9f5d",
+      "git_blob": "e62a0158d4f28d01f3c21183fe1e5022eb810482",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/not_running.go"
+      }
+    },
+    {
+      "path": "wrappers/host/render.go",
+      "sha256": "5825cf7f4f178393f1c424a647fe716a236df65484ff00456684f7c75110a4bf",
+      "git_blob": "df5de0b77e76d0c5b69395c486fb1779ec6ae3f5",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/render.go"
+      }
+    },
+    {
+      "path": "wrappers/host/render_test.go",
+      "sha256": "afe8e1a16480c62217049e42e209c1bd7f8bf7174b34232179bc994dcc637d22",
+      "git_blob": "cd8a200676d5eda8577d2cd7696928939218a2ea",
+      "mode": "100644",
+      "test_functions": [
+        "TestRendererMatchesC5Fixture"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/render_test.go"
+      }
+    },
+    {
+      "path": "wrappers/host/testdata/native-message-envelope.json",
+      "sha256": "3b6fd04eb1d829f0e5313e350e624ebc27cd2e1e86286a68e395dd731e6d46bf",
+      "git_blob": "3b16a853d38d0aa45d874a038498b950000fb24b",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "host/testdata/native-message-envelope.json"
+      }
+    },
+    {
+      "path": "wrappers/mcp/SESSIONBUS.md",
+      "sha256": "ff6fe51ed21e1350845bd111fc6686774e1529409c80da7eff43b0987ba621e9",
+      "git_blob": "58d04d81c5da4d51721b43db2170c5b6804cca5e",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/SESSIONBUS.md"
+      }
+    },
+    {
+      "path": "wrappers/mcp/lane.go",
+      "sha256": "8b04b2461decde1b1ae0d82bdc2ec78f2f7565cbbcd958c3476bbb1f59a444f5",
+      "git_blob": "a8886f4611d8914928405c78f159be5a2bac2010",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/lane.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/lane_test.go",
+      "sha256": "e7445ffaed03a51edd3e40439f70da2d407097f2b5af36c3542f57522298a139",
+      "git_blob": "66dc1f002f96ac1333adc06eb8474fa6bace6311",
+      "mode": "100644",
+      "test_functions": [
+        "TestLaneBackendCrossingCallsAndErrors",
+        "TestLaneBackendRequiresSocket",
+        "TestPrivateActionKeepsCallerInResidentServer",
+        "TestPrivateActionPreservesWorkerCollectionError",
+        "TestServeLaneJoinsAdmittedActions"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/lane_test.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/self_info_test.go",
+      "sha256": "1d74e4cc9cacd08dc3423cb8b8a1164159c2fd38cb6402421f31617ab15d7e06",
+      "git_blob": "073130230403e5ba252163908967176ac1eee19a",
+      "mode": "100644",
+      "test_functions": [
+        "TestListSelfInfoSurvivesCallerAndNativeToolResponse"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/self_info_test.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/send_test.go",
+      "sha256": "fc02016425eb1383b3d084f83f9edbca5e226c4448ff52de2ccb6bc68725177c",
+      "git_blob": "60802795e39d7ab9c8e583307549e90a9fa0b94d",
+      "mode": "100644",
+      "test_functions": [
+        "TestSendRejectsUnknownSummaryBeforeDispatch",
+        "TestAdvertisedArgumentsMatchPublicActionFieldUnion"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/send_test.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/server.go",
+      "sha256": "edf6a6e468b1be8296f285a0dac29bfb8c753792b76f90397bb0602267e264d3",
+      "git_blob": "f0ed6b8c6e849a20c599963c4943eb407c1df88e",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/server.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/server_test.go",
+      "sha256": "21b0d44c7d38cc8c26fda0073524b84426a8ecc2ea3ad5a52dcc8e4c484cfa0c",
+      "git_blob": "d3e17072971e004f26405fb06927b1e4f23a4993",
+      "mode": "100644",
+      "test_functions": [
+        "TestServerMethods",
+        "TestInvalidRequests",
+        "TestToolArgumentsMustBeObject",
+        "TestServerUsesBackendCallerAfterPrepare",
+        "TestServerUsesStatelessActionBackend",
+        "TestServerReturnsOutputFailure",
+        "TestServerCancelWithStoppedOutput"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/server_test.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/sessionbus.go",
+      "sha256": "f7fe0a847a5fb58b005c61c86d97f83010866b11d407b458421ce63605c49cb7",
+      "git_blob": "926ed7bdd5f377158fcf6292b8f95fe1ff46203d",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/sessionbus.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/sessionbus_bounds_test.go",
+      "sha256": "e59d02ed325197568fa9c9daa7c1f72b197b69b1b7074000f9ba8b577c2402c5",
+      "git_blob": "3fba5851239e464f4b47f33d97f936f969cf7492",
+      "mode": "100644",
+      "test_functions": [
+        "TestMCPBlockedResponsesDoNotHoldEOF",
+        "TestMCPBlockedOSPipeWriteJoinsOnEOF",
+        "TestMCPInitializedOnlyAfterSuccessfulWrite",
+        "TestMCPResponseWorkAndRetainedInputLimits",
+        "TestMCPReturnedPayloadBudgetStopsBlockedResponses",
+        "TestMCPFrameAndEscapedResultBounds",
+        "TestMCPCompletedActionDoesNotWriteAfterEOF",
+        "TestMCPResponseReservationsReleaseAndIDsCanBeReused",
+        "TestMCPOversizedPayloadStopsWithoutOutput",
+        "TestMCPCancelledCallsReleaseWorkWithoutReplies"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/sessionbus_bounds_test.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/sessionbus_test.go",
+      "sha256": "411caa0d710203944f75bd83002f11a36f929333beb854e5bbc4ae4fb9ac62ed",
+      "git_blob": "2286a88aed2a5952ce07ba65174d990aae401819",
+      "mode": "100644",
+      "test_functions": [
+        "TestSessionbusNativeReportsAreExplicitAndHidden",
+        "TestSessionbusReportCannotShadowPublicTool",
+        "TestSessionbusMetadataIsPerNativeRequest",
+        "TestInactiveMCPStaysUntilEOFAndAdvertisesNothing"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/sessionbus_test.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/sessionbus_tools.go",
+      "sha256": "7c553b1ad6f8abf3c3da72417d1bf771b98cc31614cbe96aa2b9564da27f5924",
+      "git_blob": "2113cf19522f661bfec41f9e578ac23772455cd6",
+      "mode": "100644",
+      "test_functions": [],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/sessionbus_tools.go"
+      }
+    },
+    {
+      "path": "wrappers/mcp/trace_policy_test.go",
+      "sha256": "98f71c86987892c98f4dcdb02fd2c4cc1cf96f024b60328ac342281334f30875",
+      "git_blob": "c34073b1d148cc08d6cfd69758784dfd9cca6ec8",
+      "mode": "100644",
+      "test_functions": [
+        "TestSpawnResultTraceSurvivesSDKAndMCP"
+      ],
+      "current_location": {
+        "repository": "sessionbus/peer-common",
+        "commit": "eb655f686e4456a4c1121054763318e3d27e89b0",
+        "path": "mcp/trace_policy_test.go"
+      }
+    }
+  ],
+  "file_count": 64,
+  "test_function_count": 133
+}

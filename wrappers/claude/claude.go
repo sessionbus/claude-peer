@@ -13,9 +13,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/antst/sessionbus-peers/wrappers/claude/interactive"
-	"github.com/antst/sessionbus-peers/wrappers/host"
 	kit "github.com/antst/sessionbus/bus/sdk/go"
+	"github.com/sessionbus/claude-peer/wrappers/claude/interactive"
+	"github.com/sessionbus/peer-common/host"
 )
 
 const Product = "claude-peer"

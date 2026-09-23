@@ -6,7 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"github.com/antst/sessionbus-peers/internal/testsocket"
+	"github.com/sessionbus/peer-common/testsocket"
 	"io"
 	"net"
 	"os"
@@ -15,9 +15,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/antst/sessionbus-peers/wrappers/claude/interactive"
 	kit "github.com/antst/sessionbus/bus/sdk/go"
 	"github.com/antst/sessionbus/bus/sdk/go/protocol"
+	"github.com/sessionbus/claude-peer/wrappers/claude/interactive"
 )
 
 func TestNativeArgumentsPreserveCallerSuffix(t *testing.T) {
