@@ -4,8 +4,10 @@ Baseline: original peers main `710e5d33369cba4fb9468cd24fea0fe844a0219d`.
 The F01–F20 requirement IDs are shared with the migration checklist. Product
 semantics and known limitations stay explicit; a failed check does not remove a
 requirement. Extraction source preservation and fresh installed behavior are
-separate evidence. Current status: local source checks pass; independent review,
-permanent installation and fresh installed acceptance are pending.
+separate evidence. Current status: source preservation, independent review, hosted CI, permanent
+installation/reinstallation and four fresh wake surfaces are accepted. The
+installed acceptance below records the retrospective assessments and the original
+test-driver failures separately.
 
 | ID | Preserved functionality | Existing regression coverage | Installed evidence / limit |
 |---|---|---|---|
@@ -63,3 +65,76 @@ run retained tests/race/vet/lint/packaging checks; install the exact artifact;
 verify interactive and lane behavior with retained native evidence; report any
 remaining limitation before merge. No runtime redesign, version bump or release
 publication is part of the extraction.
+
+## Installed acceptance
+
+Tested source: `ff8471b6d9965a39c934e7a8fe3a0a4f706b3e4e`; merge
+`99709ed7a5af1241a1a2f508886bdfd3a35c6369` has the same tree. Installed wrapper
+SHA256: `4df3ec5d644a0e5650126999edb89dbcc09e2b6c3f0967701a14d6292aad0d16`.
+Install/reinstall packet seal:
+`746d006040c6ae63cb08e763aeb3aab5f01681d455a8f9fdfb83447f3d963f0c`.
+The common pin above, package/plugin files and private aliases were verified in
+the permanent real-home installation. No alternate prefix or configuration was
+used. B and D ran on native 2.1.278; H and I ran on 2.1.280 after the native
+client updated during this work.
+
+Root and dev2 independently reviewed the following four exchanges. Each original
+run has a preserved failed driver outcome and null acceptance; the separate
+assessment validates retained native history and cleanup without replaying the
+message or running the model again. These are retrospective functional passes,
+not claims that the original driver or original phase check passed.
+
+| Requirement | Cell | Observed native behavior | Assessment seal (SHA256 of SHA256SUMS) |
+|---|---|---|---|
+| F13 managed idle | CLW922B | Injected delivery; distinct automatic wake run, reply and final | `6fb95574c71e483f7dd71701b2f92f81b67c124c4d331900d1748e9c7fc76662` |
+| F14 managed active | CLW922D | Queued during original Bash; distinct automatic wake run after it | `5f5e2d87e061a28d1eed18cca6bd2a89b078ee57396f73b975321fd43a4c0c68` |
+| F11 interactive idle | CLW922H | Written delivery; native peer carrier, reply, final and stop | `d57420481cdc59e77ed0c64702cbfc98bda1910feadb8d8a9d0205c3eb74e8f1` |
+| F12 interactive active | CLW922I | Written while Bash active; native queue absorbed into the original turn as an attachment, reply and combined final/stop | `bc68d7075c6657464caf67e8487ed53fe1235d6e83c27b21f94b80dd82d75162` |
+
+Original packet seals, in the same order:
+
+- B: `b488d4ccec84f0aae23b191ee140d90407644c209459b72a070bad97f77d8f45`.
+- D: `80b7d5f6104e91f45568f881e06992dd35185fb7b15e0fe2bd309d2bb69f2fdf`.
+- H: `79fce9dd58c247c07d1fbe0bb5abaf361407eb3b672dc103091c7641200b39d1`.
+- I: `f3fb395ef1d71c5795ffd882544088db4617ab5f54301e8f3175386b8423e805`.
+
+Packets are retained under the development-host evidence directory
+`/home/antst/sessionbus-evidence/claude-split-wake-installed-dev1-20260922/`;
+they are not published repository artifacts. Seals identify exact retained
+packets, and do not by themselves give public access to their contents.
+
+B's driver failed when it queried the expected unknown-session error before
+collecting the roster. D's strict text check rejected valid final prose first.
+Its projector would also have rejected native ToolSearch `max_results: 3`, but
+that check never ran in the original driver. D's original run was acknowledged;
+its wake result was collected but
+**not acknowledged**. No synthetic acknowledgement is claimed.
+
+H's checker omitted native peer framing. I's checker expected a second ordinary
+user row, while native history recorded `absorbed_mid_turn` and a
+`queued_command` attachment on the original turn. The assessments verify the
+entire carrier and independently reconstructed authenticated envelope. They do
+not invent a second ordinary user or separate wake turn for I.
+
+H and I retain the original timeout, missing runtime terminal artifact and
+`cleanup_before_wake_terminal` status. Their final/stop evidence comes from
+persisted native history; process generations come from the historical
+ready/send-window witnesses (also post-receipt for I), with **no final process
+sample**. No original close/forget event is claimed. Owned interruption left no
+survivors; independently retained roster/process observations were empty and
+target queries returned unknown-session. Static configuration and installed
+inventory checks passed. Native-owned state updates were retained separately.
+
+Every accepted cell used one inbound send and no later model, keyboard or
+lifecycle input. Interactive setup used the native positional prompt with zero
+PTY writes. Active fixtures granted only the exact sleep command per launch.
+Earlier A/C/E/F/G diagnostics remain preserved; none is represented as a wake
+pass. Root independently confirmed that G's settings serialization change
+preserved all JSON values; the writer remains unknown. G's separate presence
+correction preserves the observed public session without claiming a completed
+setup.
+
+This closes F11–F14 on the installed Linux artifact. Source/test preservation
+supports the remaining requirements; four wake cells do not claim fresh native
+coverage of every lifecycle path, platform, permission mode or update. No native
+version allowlist, product redesign or release is introduced.
