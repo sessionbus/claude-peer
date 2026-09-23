@@ -4,10 +4,14 @@ Baseline: original peers main `710e5d33369cba4fb9468cd24fea0fe844a0219d`.
 The F01–F20 requirement IDs are shared with the migration checklist. Product
 semantics and known limitations stay explicit; a failed check does not remove a
 requirement. Extraction source preservation and fresh installed behavior are
-separate evidence. Current status: source preservation, independent review, hosted CI, permanent
-installation/reinstallation and four fresh wake surfaces are accepted. The
-installed acceptance below records the retrospective assessments and the original
-test-driver failures separately.
+separate evidence. Source preservation, independent review, hosted CI and permanent
+installation/reinstallation passed. Four wake exchanges were accepted through
+retrospective assessments; none of their original automated drivers completed
+successfully. Fresh September 23 baseline communication passes 4/4 plus both
+deny guards; clean automated wake passes 4/4 through CLW923A/B/C/G. Earlier
+interactive ACTIVE attempts D and F remain original failed runs. The
+[regression recovery record](REGRESSION-RECOVERY.md) records the separate results.
+The installed evidence below remains valid with its original limitations.
 
 | ID | Preserved functionality | Existing regression coverage | Installed evidence / limit |
 |---|---|---|---|
@@ -128,13 +132,18 @@ inventory checks passed. Native-owned state updates were retained separately.
 Every accepted cell used one inbound send and no later model, keyboard or
 lifecycle input. Interactive setup used the native positional prompt with zero
 PTY writes. Active fixtures granted only the exact sleep command per launch.
-Earlier A/C/E/F/G diagnostics remain preserved; none is represented as a wake
-pass. Root independently confirmed that G's settings serialization change
-preserved all JSON values; the writer remains unknown. G's separate presence
-correction preserves the observed public session without claiming a completed
-setup.
+Earlier CLW922A/C/E/F/G diagnostics remain preserved; none is represented as a
+wake pass. Root independently confirmed that CLW922G's settings serialization
+change preserved all JSON values; the writer remains unknown. CLW922G's separate
+presence correction preserves the observed public session without claiming a
+completed setup.
 
-This closes F11–F14 on the installed Linux artifact. Source/test preservation
-supports the remaining requirements; four wake cells do not claim fresh native
-coverage of every lifecycle path, platform, permission mode or update. No native
-version allowlist, product redesign or release is introduced.
+These retrospective assessments establish the four observed wake exchanges on
+the installed Linux artifact. They alone did not close clean automated acceptance
+of F11–F14; the separate fresh CLW923A/B/C/G drivers do (4/4, recorded in the
+[regression recovery record](REGRESSION-RECOVERY.md)). The earlier explicit
+communication regression scenarios passed separately in fresh baseline cells.
+Source preservation is measured against the extraction baseline, which already
+contained changes absent from the prior UMKA installation. Fresh coverage of
+every lifecycle path, platform, permission mode or update is not claimed. No
+native version allowlist, product redesign or release is introduced.
