@@ -50,7 +50,11 @@ append was replaced by pre-submission deferral and a daemon-seeded delivery run.
 The extraction preserves that change from the 710e baseline. Earlier explicit
 communication passes were neither fresh automatic-wake acceptance nor a fresh
 regression pass on ff8471. The [recovery record](REGRESSION-RECOVERY.md) tracks
-old-to-current coverage and clean automated acceptance separately. The obsolete b6fb0e6 Node portability branch
+old-to-current coverage and clean automated acceptance separately. Fresh September
+23 tests now pass the four old communication scenarios and both deny guards.
+Three fresh wake drivers complete cleanly; interactive ACTIVE sends its reply
+but omits the required wake-final marker, leaving clean wake acceptance at 3/4.
+The obsolete b6fb0e6 Node portability branch
 remains archived on the original Codex repository; it was not cherry-picked into
 the Go implementation.
 

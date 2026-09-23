@@ -7,8 +7,10 @@ requirement. Extraction source preservation and fresh installed behavior are
 separate evidence. Source preservation, independent review, hosted CI and permanent
 installation/reinstallation passed. Four wake exchanges were accepted through
 retrospective assessments; none of their original automated drivers completed
-successfully. Baseline communication regressions and clean automated wake
-acceptance are reopened in the [regression recovery record](REGRESSION-RECOVERY.md).
+successfully. Fresh September 23 baseline communication passes 4/4 plus both
+deny guards; clean automated wake passes 3/4. Interactive ACTIVE replies but
+omits its requested wake-final marker. The
+[regression recovery record](REGRESSION-RECOVERY.md) records the separate results.
 The installed evidence below remains valid with its original limitations.
 
 | ID | Preserved functionality | Existing regression coverage | Installed evidence / limit |
