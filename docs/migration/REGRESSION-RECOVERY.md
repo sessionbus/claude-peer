@@ -1,9 +1,8 @@
 # Claude baseline regression recovery
 
-Status: old communication regressions pass; fresh clean wake acceptance is 3/4.
-Interactive ACTIVE returned the requested direct reply but omitted the requested
-wake-final marker, so its strict test remains failed. Historical failed runs and
-retrospective assessments remain unchanged.
+Status: old communication regressions pass; fresh clean wake acceptance is 4/4
+through CLW923A/B/C/G. Interactive ACTIVE attempts D and F remain original
+failed runs. Historical failed runs and retrospective assessments remain unchanged.
 
 ## Comparisons that must remain separate
 
@@ -12,7 +11,7 @@ retrospective assessments remain unchanged.
 | Installed `8be5802` September 19 acceptance | Ordinary/bypass lanes and ordinary/yolo interactive peers completed native list/send with receiver correlation and cleanup; both deny guards rejected before startup | Fresh four scenarios plus two deny guards pass on the permanent installation |
 | Previous installed `a1af0c15` to mandatory-wake `6b4836` | Managed delivery changed from native append to refusal before submission, followed by daemon scheduling of a query run; three append tests were replaced | Reconciliation and missing wrapper/Worker regressions implemented in [MANAGED-DELIVERY-REGRESSIONS.md](MANAGED-DELIVERY-REGRESSIONS.md); same-turn behavior remains changed |
 | Extraction baseline `710e5d3` to `ff8471` | Protected runtime preserved with module import relocation | This alone proves nothing about equivalence with the older installed wrapper |
-| New wake cells B/D/H/I | Native exchanges independently accepted from retained evidence | All four original drivers failed; fresh CLW923A/B/C drivers pass, while CLW923D lacks its requested wake-final marker |
+| New wake cells B/D/H/I | Native exchanges independently accepted from retained evidence | All four original drivers failed; fresh CLW923A/B/C/G complete their original driver and phase checks; D/F remain separate failed attempts |
 
 Historical reference: `claude-comms-grant-installed-20260919/PLAN.md`,
 `OBSERVATIONS.md` and `verify_histories.py` under the development evidence root.
@@ -72,7 +71,7 @@ product defect requires a reviewed rebuild. No version bump or release.
 
 Report source checks, historical evidence, retrospective assessments and fresh
 clean driver results separately. Completion requires both the old communication
-regressions and four clean wake surfaces; until then this record stays open.
+regressions and four clean wake surfaces; both were met on September 23 (below).
 
 ## September 23 implementation and fresh results
 
@@ -84,7 +83,8 @@ and turn-boundary behavior have separate Bus tests. No Claude product runtime
 code or permanent installed binary changed during this recovery.
 
 The consolidated local runner is `claude-wake-regression-runner-20260923` under
-`/home/antst/sessionbus-evidence`. Independent review and 100 offline tests pass.
+`/home/antst/sessionbus-evidence`. Independent review and 107 offline tests pass
+after the active fixture, cleanup and projection fixes.
 It handles optional discovery and final prose, distinct peer carriers and
 absorbed mid-turn attachments, exact admission inventory, actual managed
 acknowledgements, final native generation and final-to-stop ancestry. Current
@@ -113,7 +113,7 @@ native terminal. No permission setting was changed to obtain the ordinary pass.
 An unresolved approval prompt would fail this runner without granting it; the
 runner does not implement or claim a demonstrated native UI decline.
 
-### Fresh wake contract: three clean passes, one unmet final requirement
+### Fresh wake contract: four clean passes, two retained failed attempts
 
 Packets are under `claude-wake-regression-live-dev1-20260923/cells-clw923*/`.
 These are new runs, separate from CLW922B/D/H/I and their retrospective records.
@@ -124,13 +124,15 @@ These are new runs, separate from CLW922B/D/H/I and their retrospective records.
 | Managed active | CLW923B | PASS, exit 0 and original phase pass | One queued inbound with live original sleep witnesses; successful Bash; distinct automatic wake, reply/final; both runs collected and acknowledged |
 | Interactive idle | CLW923C | PASS, exit 0 and original phase pass | One written inbound; distinct peer carrier; exact reply/final/descendant stop and final native generation |
 | Interactive active | CLW923D | FAIL, exit 1; no original phase pass | One written inbound and exact direct reply; absorbed attachment on original turn; sole substantive final contains only the setup marker, with no requested wake-final marker |
+| Interactive active | CLW923F | FAIL, exit 1; no original phase pass | Exact reply and combined final/stop persisted; the projector required a ledger-only `state` field absent from its live post-receipt projection |
+| Interactive active | CLW923G | PASS, exit 0 and original phase pass | One written inbound while the original Bash ran; successful Bash, absorbed attachment, sole correlated reply, combined final with both standalone markers and descendant stop |
 
-Dev2 independently reproduced the first three projections and original phase
+Dev2 independently reproduced the A/B/C/G projections and original phase
 checks. Managed cleanup includes successful close/forget and unknown target;
-interactive idle cleanup followed the observed terminal with no survivors.
-For A–C, retained scoped public rosters and owned process scans were empty.
-No wake test received
-a later model prompt or keyboard input, and no inbound was resent.
+interactive cleanup followed observed terminals with no survivors. For these
+four passing cells, retained scoped public rosters and owned process scans were
+empty. No wake test received a later model prompt or keyboard input, and no
+inbound was resent.
 
 For D, the retained `native-history-during-wait.jsonl` (84 rows), SHA256
 `b68cb8c6b1c92242420d67ec73a6b05e24549950313ce0aa1f6a8cc62cc68d87`
@@ -151,9 +153,31 @@ settings/service. A separate root native-tool observation after cleanup records
 unknown target and an empty scoped roster in
 `root-public-cleanup-observation.json`; it is not an original driver artifact.
 The owned temporary root and local driver/SSH/controller processes were removed.
-Cleanup does not turn the missing final into a pass.
-Full four-surface clean acceptance remains
-open; same-turn managed compatibility remains separately un-restored.
+Cleanup does not turn the missing final into a pass. D's setup instruction
+required exactly the setup marker, while its absorbed peer message requested a
+wake-final marker in the same native turn. The corrected fixture asks for the
+setup marker on its own line, allowing a combined final without weakening the
+marker checks.
+
+F's original packet at `cells-clw923f/claude-peer-active-clw923f` retained its
+first driver failure. Its native reply and both final markers were present, but
+the active attachment projector expected a `state` label that the driver added
+only to the ledger, not to the live post-receipt projection. The correction
+checks that projection's validated `phase=post-receipt`; it leaves the driver,
+ledger, fixture and strict Bash/receipt/final checks unchanged. F also verifies
+the bounded local SSH cleanup correction: remote cleanup was clean, and the
+task-owned local SSH group was reaped with no survivor. Neither correction
+relabels F as an original pass.
+
+G's original packet at `cells-clw923g/claude-peer-active-clw923g` contains the
+driver's `complete` event and exit code 0, original phase-guard pass, native
+history, public receipt and direct reply, final terminal and cleanup evidence.
+The one post-hoc runner manifest, `runner-sha256-post-clw923g.json`, records
+current source hashes and mtimes; no listed runner file is newer than G's
+preflight provenance. It is not a pre-launch source attestation. Dev2
+independently reprojected the 76-row final history and accepted G's original
+driver result. Clean four-surface wake acceptance is complete; the older
+same-turn managed capability remains separately un-restored.
 
 ### Preserved prerequisite failures
 

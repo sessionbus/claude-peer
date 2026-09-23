@@ -52,8 +52,9 @@ communication passes were neither fresh automatic-wake acceptance nor a fresh
 regression pass on ff8471. The [recovery record](REGRESSION-RECOVERY.md) tracks
 old-to-current coverage and clean automated acceptance separately. Fresh September
 23 tests now pass the four old communication scenarios and both deny guards.
-Three fresh wake drivers complete cleanly; interactive ACTIVE sends its reply
-but omits the required wake-final marker, leaving clean wake acceptance at 3/4.
+Four fresh wake drivers complete cleanly (CLW923A/B/C/G). Earlier interactive
+ACTIVE attempts D and F remain original failures with their diagnoses in the
+recovery record; clean wake acceptance is 4/4 without relabeling those runs.
 The obsolete b6fb0e6 Node portability branch
 remains archived on the original Codex repository; it was not cherry-picked into
 the Go implementation.

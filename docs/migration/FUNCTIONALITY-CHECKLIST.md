@@ -8,8 +8,8 @@ separate evidence. Source preservation, independent review, hosted CI and perman
 installation/reinstallation passed. Four wake exchanges were accepted through
 retrospective assessments; none of their original automated drivers completed
 successfully. Fresh September 23 baseline communication passes 4/4 plus both
-deny guards; clean automated wake passes 3/4. Interactive ACTIVE replies but
-omits its requested wake-final marker. The
+deny guards; clean automated wake passes 4/4 through CLW923A/B/C/G. Earlier
+interactive ACTIVE attempts D and F remain original failed runs. The
 [regression recovery record](REGRESSION-RECOVERY.md) records the separate results.
 The installed evidence below remains valid with its original limitations.
 
@@ -132,15 +132,17 @@ inventory checks passed. Native-owned state updates were retained separately.
 Every accepted cell used one inbound send and no later model, keyboard or
 lifecycle input. Interactive setup used the native positional prompt with zero
 PTY writes. Active fixtures granted only the exact sleep command per launch.
-Earlier A/C/E/F/G diagnostics remain preserved; none is represented as a wake
-pass. Root independently confirmed that G's settings serialization change
-preserved all JSON values; the writer remains unknown. G's separate presence
-correction preserves the observed public session without claiming a completed
-setup.
+Earlier CLW922A/C/E/F/G diagnostics remain preserved; none is represented as a
+wake pass. Root independently confirmed that CLW922G's settings serialization
+change preserved all JSON values; the writer remains unknown. CLW922G's separate
+presence correction preserves the observed public session without claiming a
+completed setup.
 
 These retrospective assessments establish the four observed wake exchanges on
-the installed Linux artifact. They do not close clean automated acceptance of
-F11–F14, or replace the earlier explicit communication regression scenarios.
+the installed Linux artifact. They alone did not close clean automated acceptance
+of F11–F14; the separate fresh CLW923A/B/C/G drivers do (4/4, recorded in the
+[regression recovery record](REGRESSION-RECOVERY.md)). The earlier explicit
+communication regression scenarios passed separately in fresh baseline cells.
 Source preservation is measured against the extraction baseline, which already
 contained changes absent from the prior UMKA installation. Fresh coverage of
 every lifecycle path, platform, permission mode or update is not claimed. No
