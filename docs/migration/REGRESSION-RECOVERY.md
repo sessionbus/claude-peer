@@ -25,8 +25,8 @@ Sessionbus tool, authenticated identity/list result, settled send and direct
 receiver observation. Preserve the ordinary interactive unrelated-operation
 policy observation without changing native policy to force its outcome.
 
-Earlier installed evidence also demonstrated same-turn managed append after a
-held tool was released (`lfc-active-allowed` and `lfc-active-admission`). The
+Earlier installed evidence also demonstrated same-turn managed delivery initiated during a
+held tool and admitted after its release (`lfc-active-allowed` and `lfc-active-admission`). The
 mandatory-wake fallback does not preserve that scheduling behavior: an active
 lane message waits for a subsequent managed run. Record this change explicitly;
 a passing explicit list/send test cannot prove same-turn compatibility. The
