@@ -8,7 +8,7 @@ sealed historical runs and retrospective assessments remain unchanged.
 | Comparison | Established result | Outstanding proof |
 |---|---|---|
 | Installed `8be5802` September 19 acceptance | Ordinary/bypass lanes and ordinary/yolo interactive peers completed native list/send with receiver correlation and cleanup; both deny guards rejected before startup | Repeat those supported communication scenarios on the current permanent installation |
-| Previous installed `a1af0c15` to mandatory-wake `6b4836` | Managed delivery changed from native append to refusal before submission, followed by daemon scheduling of a query run; three append tests were replaced | Map retained guarantees to current stream/Worker/daemon tests and fill concrete gaps |
+| Previous installed `a1af0c15` to mandatory-wake `6b4836` | Managed delivery changed from native append to refusal before submission, followed by daemon scheduling of a query run; three append tests were replaced | Reconciliation and missing wrapper/Worker regressions implemented in [MANAGED-DELIVERY-REGRESSIONS.md](MANAGED-DELIVERY-REGRESSIONS.md); same-turn behavior remains changed |
 | Extraction baseline `710e5d3` to `ff8471` | Protected runtime preserved with module import relocation | This alone proves nothing about equivalence with the older installed wrapper |
 | New wake cells B/D/H/I | Native exchanges independently accepted from retained evidence | All four original drivers failed; clean driver completion remains pending |
 
@@ -71,3 +71,31 @@ product defect requires a reviewed rebuild. No version bump or release.
 Report source checks, historical evidence, retrospective assessments and fresh
 clean driver results separately. Completion requires both the old communication
 regressions and four clean wake surfaces; until then this record stays open.
+
+## September 23 implementation and first live results
+
+- Added direct native-frame assertions for idle/active refusal, original-result
+  retention, wake uncertainty, UUID/session correlation, and the Worker refusal
+  followed by a separately seeded wake run. Full Go tests and targeted race
+  checks pass; no product runtime code changed.
+- Consolidated the existing managed and interactive wake runner in the local
+  `claude-wake-regression-runner-20260923` evidence directory. It handles the
+  retained native discovery/final forms, distinct peer carrier and absorbed
+  mid-turn attachment, actual managed acknowledgements, final live generation,
+  and cleanup ordering. Independent review and 99 offline Claude tests pass.
+  This is source validation, not fresh installed wake acceptance.
+- Both original managed-tool deny guards pass against the permanent UMKA
+  installation, with strict installed pre/post observations and no model turn.
+- The ordinary managed communication run started, reached its exact Sessionbus
+  `list({})` call, and hit the controller's bounded transport timeout before a
+  reply. Further model cells remain pending. The original failure is retained;
+  it is not converted into a pass.
+
+The all-host list is independently stalled outside Claude too. At the running
+pdev daemon source `326bc81`, `collectFederatedList` waits for every directed
+host reply without a per-host or aggregate deadline. A directed `mbp` query
+also did not return during the observed interval. Host-local identity listing
+works and is used for the test controller, but does not replace the historical
+communication regression's all-host query. No daemon or authentication change
+was made to force a pass. The detailed local record is
+`claude-baseline-regression-prep-dev1-20260923/FEDERATION-BLOCKER.md`.
