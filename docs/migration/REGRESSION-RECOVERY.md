@@ -90,12 +90,17 @@ regressions and four clean wake surfaces; until then this record stays open.
   `list({})` call, and hit the controller's bounded transport timeout before a
   reply. Further model cells remain pending. The original failure is retained;
   it is not converted into a pass.
+  Native history retains a `user-rejected` tool result near that deadline;
+  those records alone do not distinguish native approval, a stalled tool call,
+  or cancellation. Owned public cleanup succeeded, with no remaining Claude
+  processes and unchanged static settings.
 
 The all-host list is independently stalled outside Claude too. At the running
 pdev daemon source `326bc81`, `collectFederatedList` waits for every directed
 host reply without a per-host or aggregate deadline. A directed `mbp` query
 also did not return during the observed interval. Host-local identity listing
 works and is used for the test controller, but does not replace the historical
-communication regression's all-host query. No daemon or authentication change
-was made to force a pass. The detailed local record is
+communication regression's all-host query. This independent prerequisite
+failure does not establish the cause of the run's native rejection. No daemon
+or authentication change was made to force a pass. The detailed local record is
 `claude-baseline-regression-prep-dev1-20260923/FEDERATION-BLOCKER.md`.
