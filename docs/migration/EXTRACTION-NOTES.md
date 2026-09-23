@@ -28,20 +28,29 @@ that were already unresolved are not represented as live repository targets.
 Three deletion-induced Pi/OMP links now point to immutable original source in
 the family repo; the root README install anchor is updated.
 
-Local protected-file normalization passed for all 64 files and 133 tests. Fresh
-installation/acceptance and independent extraction review remain pending. A
-historical pass does not validate this new artifact. Release publication remains
-held and no version bump is made. Native client version updates are expected;
-exact native versions in evidence are provenance, not a compatibility allowlist.
+Local protected-file normalization passed for all 64 files and 133 tests.
+Independent source review and hosted Linux/macOS/scan/workflow checks passed at
+`ff8471b6d9965a39c934e7a8fe3a0a4f706b3e4e`. PR #1 merged as
+`99709ed7a5af1241a1a2f508886bdfd3a35c6369` with the same tree. Four platform
+archives built; the Linux amd64 archive was installed and reinstalled in UMKA's
+real home with identical installed inventories. The common pin is unchanged.
 
-Retained native installation inventory identifies UMKA's installed a1af0c wrapper
-as predating the repository's merged 6b4836 mandatory-wake fix. The extraction
-preserves 6b4836 because it is already in the 710e baseline; fresh installed wake
-acceptance for Claude is still outstanding. Earlier explicit communication
-passes do not establish automatic wake. The obsolete b6fb0e6 Node portability
-branch remains archived on the original Codex repository and is not blindly
-cherry-picked into the Go implementation.
+Fresh managed idle/active and interactive idle/active exchanges are accepted
+through separately reviewed retrospective assessments. The original test-driver
+failures and their limitations remain recorded; see the
+[installed acceptance record](FUNCTIONALITY-CHECKLIST.md#installed-acceptance).
+The assessment process made no model calls or product changes. Native versions
+2.1.278 and 2.1.280 identify those observations, not a compatibility allowlist.
+No release, tag or version bump accompanies this extraction.
 
-Local extraction checks: go test, race, vet, module verify/tidy, golangci-lint,
-actionlint and protected source/test normalization pass. There is no new model
-call or UMKA mutation in this source preparation.
+The previous UMKA a1af0c wrapper predated the merged 6b4836 mandatory-wake fix.
+This extraction preserves 6b4836 from the 710e baseline and validates the newly
+installed ff8471 artifact. Earlier explicit communication passes were not reused
+as fresh automatic-wake acceptance. The obsolete b6fb0e6 Node portability branch
+remains archived on the original Codex repository; it was not cherry-picked into
+the Go implementation.
+
+Local extraction checks (test, race, vet, module verify/tidy, golangci-lint,
+actionlint and protected source/test normalization) passed. Native macOS behavior
+and the lifecycle qualifications in the checklist remain outside these four
+UMKA wake observations.
