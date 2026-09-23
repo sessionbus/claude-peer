@@ -72,10 +72,11 @@ Tested source: `ff8471b6d9965a39c934e7a8fe3a0a4f706b3e4e`; merge
 `99709ed7a5af1241a1a2f508886bdfd3a35c6369` has the same tree. Installed wrapper
 SHA256: `4df3ec5d644a0e5650126999edb89dbcc09e2b6c3f0967701a14d6292aad0d16`.
 Install/reinstall packet seal:
-`746d006040c6ae63cb08e763aeb3aab5f01681d455a8f9fdfb83447f3d963f0c` (20 payloads).
+`746d006040c6ae63cb08e763aeb3aab5f01681d455a8f9fdfb83447f3d963f0c`.
 The common pin above, package/plugin files and private aliases were verified in
 the permanent real-home installation. No alternate prefix or configuration was
-used. The native client updated from 2.1.278 to 2.1.280 during this work.
+used. B and D ran on native 2.1.278; H and I ran on 2.1.280 after the native
+client updated during this work.
 
 Root and dev2 independently reviewed the following four exchanges. Each original
 run has a preserved failed driver outcome and null acceptance; the separate
@@ -103,8 +104,10 @@ they are not published repository artifacts. Seals identify exact retained
 packets, and do not by themselves give public access to their contents.
 
 B's driver failed when it queried the expected unknown-session error before
-collecting the roster. D's checker rejected valid discovery parameters and final
-prose. D's original run was acknowledged; its wake result was collected but
+collecting the roster. D's strict text check rejected valid final prose first.
+Its projector would also have rejected native ToolSearch `max_results: 3`, but
+that check never ran in the original driver. D's original run was acknowledged;
+its wake result was collected but
 **not acknowledged**. No synthetic acknowledgement is claimed.
 
 H's checker omitted native peer framing. I's checker expected a second ordinary
@@ -126,9 +129,10 @@ Every accepted cell used one inbound send and no later model, keyboard or
 lifecycle input. Interactive setup used the native positional prompt with zero
 PTY writes. Active fixtures granted only the exact sleep command per launch.
 Earlier A/C/E/F/G diagnostics remain preserved; none is represented as a wake
-pass. G's settings serialization change was independently shown to preserve all
-JSON values, and its separate presence correction preserves the observed public
-session without claiming a completed setup.
+pass. Root independently confirmed that G's settings serialization change
+preserved all JSON values; the writer remains unknown. G's separate presence
+correction preserves the observed public session without claiming a completed
+setup.
 
 This closes F11–F14 on the installed Linux artifact. Source/test preservation
 supports the remaining requirements; four wake cells do not claim fresh native
