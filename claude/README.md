@@ -194,7 +194,7 @@ specific command needed over a broad grant. Native policy remains authoritative.
 An exact launch-argument denial of the managed Sessionbus tool is rejected as
 an unusable lane rather than starting a lane with communications muted.
 
-Installed Open, public list, staging, active consumption, interruption,
+Installed Open, public list, active consumption, interruption,
 configuration and independent lanes have been checked at their recorded scope.
 A native Bash tool can have its own process group outside the worker group;
 the daemon’s group kill does not directly reach that tool. A measured hard

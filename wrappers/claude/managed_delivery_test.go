@@ -286,7 +286,7 @@ func TestActualWorkerActiveDeliveryDefersToDistinctWakeRun(t *testing.T) {
 	}
 	hello := next()
 	send(protocol.ResultBytes(hello.ID, "session.hello", struct{}{}))
-	send(protocol.RequestBytes(1, "session.open", kit.OpenRequest{Name: "parent/child@local", Groups: []string{}, Policy: &kit.LanePolicy{IdleMessage: "run"}}))
+	send(protocol.RequestBytes(1, "session.open", kit.OpenRequest{Name: "parent/child@local", Groups: []string{}, Policy: &kit.LanePolicy{}}))
 	_ = next()
 
 	send(protocol.RequestBytes(2, "turn.execute", protocol.ExecuteRequest{SessionID: "native-id@local", RunID: "g/1", Input: "original input"}))
