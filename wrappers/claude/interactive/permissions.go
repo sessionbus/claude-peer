@@ -28,7 +28,7 @@ func ValidateManagedToolArguments(arguments []string) error {
 			values := []string(nil)
 			if attached {
 				values = append(values, attachedValue)
-			} else if index+1 < len(arguments) {
+			} else if index+1 < len(arguments) && arguments[index+1] != "--" {
 				index++
 				values = append(values, arguments[index])
 				for index+1 < len(arguments) && !claudeOptionLike(arguments[index+1]) {
@@ -41,9 +41,10 @@ func ValidateManagedToolArguments(arguments []string) error {
 			}
 			continue
 		}
-		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) {
+		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) && arguments[index+1] != "--" {
 			// The first value of a native value-taking option remains data even
 			// when it begins with a dash. Do not reinterpret it as our guard.
+			// "--" still ends the options, as in LaunchPlan.
 			index++
 		}
 	}

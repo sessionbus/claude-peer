@@ -16,8 +16,6 @@ func TestManagedToolRejectsExactNativeDeny(t *testing.T) {
 		{"--disallowed-tools=Bash," + PublicTool},
 		{"--disallowedTools", "Bash(git status)", PublicTool, "--model", "sonnet"},
 		{"--disallowedTools", "Read", "--disallowed-tools", "Bash(git status) " + PublicTool},
-		{"--system-prompt", "--", "--disallowedTools", PublicTool},
-		{"--disallowedTools", "--", PublicTool},
 	} {
 		if err := ValidateManagedToolArguments(arguments); err == nil {
 			t.Fatalf("exact managed deny accepted: %q", arguments)
@@ -37,6 +35,8 @@ func TestManagedToolPreservesOtherNativePolicyAndBoundaries(t *testing.T) {
 		{"--allowedTools", "--disallowedTools", PublicTool},
 		{"--disallowedTools", "Read", "--model", PublicTool},
 		{"--", "--disallowedTools", PublicTool},
+		{"--system-prompt", "--", "--disallowedTools", PublicTool},
+		{"--disallowedTools", "--", PublicTool},
 	} {
 		if err := ValidateManagedToolArguments(arguments); err != nil {
 			t.Fatalf("native arguments %q rejected: %v", arguments, err)
