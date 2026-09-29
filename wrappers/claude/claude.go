@@ -69,6 +69,9 @@ func (p *Wrapper) Open(ctx context.Context, r kit.OpenRequest) (result kit.OpenR
 	if err := interactive.ValidateManagedToolArguments(r.Open.Arguments); err != nil {
 		return result, err
 	}
+	if err := interactive.ValidateTypedArguments(r.Open); err != nil {
+		return result, err
+	}
 	stopStartup, err := p.startLifetime(ctx)
 	if err != nil {
 		return result, err

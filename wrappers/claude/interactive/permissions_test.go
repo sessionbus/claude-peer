@@ -2,7 +2,11 @@
 
 package interactive
 
-import "testing"
+import (
+	"testing"
+
+	kit "github.com/antst/sessionbus/bus/sdk/go"
+)
 
 func TestManagedToolRejectsExactNativeDeny(t *testing.T) {
 	for _, arguments := range [][]string{
@@ -102,6 +106,58 @@ func TestManagedToolGuardPreservesCurrentNativeRequiredValues(t *testing.T) {
 	} {
 		if err := ValidateManagedToolArguments(arguments); err == nil {
 			t.Fatalf("genuine native deny accepted after %q", arguments)
+		}
+	}
+}
+
+func TestTypedArgumentsRejectRawSelectors(t *testing.T) {
+	for _, tc := range []struct {
+		field     string
+		open      kit.OpenOptions
+		arguments []string
+	}{
+		{"model", kit.OpenOptions{Model: "sonnet"}, []string{"--model", "haiku"}},
+		{"model", kit.OpenOptions{Model: "sonnet"}, []string{"--model=haiku"}},
+		{"reasoning_effort", kit.OpenOptions{ReasoningEffort: "high"}, []string{"--effort", "low"}},
+		{"reasoning_effort", kit.OpenOptions{ReasoningEffort: "high"}, []string{"--effort=low"}},
+		{"permission_mode", kit.OpenOptions{PermissionMode: "default"}, []string{"--permission-mode", "plan"}},
+		{"permission_mode", kit.OpenOptions{PermissionMode: "default"}, []string{"--permission-mode=plan"}},
+		{"permission_mode", kit.OpenOptions{PermissionMode: "default"}, []string{"--dangerously-skip-permissions"}},
+		{"permission_mode", kit.OpenOptions{PermissionMode: "bypassPermissions"}, []string{"--dangerously-skip-permissions"}},
+	} {
+		tc.open.Arguments = append([]string{"--verbose"}, tc.arguments...)
+		err := ValidateTypedArguments(tc.open)
+		if err == nil || err.Error() != "argument conflicts with typed field "+tc.field {
+			t.Fatalf("%q with typed %s: %v", tc.arguments, tc.field, err)
+		}
+		// The same selector stays native passthrough when its field is untyped.
+		untyped := kit.OpenOptions{Model: "sonnet", ReasoningEffort: "high", PermissionMode: "default", Arguments: tc.open.Arguments}
+		switch tc.field {
+		case "model":
+			untyped.Model = ""
+		case "reasoning_effort":
+			untyped.ReasoningEffort = ""
+		case "permission_mode":
+			untyped.PermissionMode = ""
+		}
+		if err := ValidateTypedArguments(untyped); err != nil {
+			t.Fatalf("%q with untyped %s rejected: %v", tc.arguments, tc.field, err)
+		}
+		if err := ValidateTypedArguments(kit.OpenOptions{Arguments: tc.open.Arguments}); err != nil {
+			t.Fatalf("%q without typed fields rejected: %v", tc.arguments, err)
+		}
+	}
+}
+
+func TestTypedArgumentsKeepOperandsAndRequiredValues(t *testing.T) {
+	typed := kit.OpenOptions{Model: "sonnet", ReasoningEffort: "high", PermissionMode: "bypassPermissions"}
+	for _, arguments := range [][]string{
+		{"--", "--model", "haiku", "--effort=low", "--permission-mode", "plan", "--dangerously-skip-permissions"},
+		{"--append-system-prompt", "--model"},
+	} {
+		typed.Arguments = arguments
+		if err := ValidateTypedArguments(typed); err != nil {
+			t.Fatalf("native arguments %q rejected: %v", arguments, err)
 		}
 	}
 }
