@@ -99,7 +99,7 @@ func TestActualWorkerWakeReceiptTerminalAndBusLoss(t *testing.T) {
 			}
 			hello := next()
 			send(protocol.ResultBytes(hello.ID, "session.hello", struct{}{}))
-			send(protocol.RequestBytes(1, "session.open", kit.OpenRequest{Name: "parent/child@local", Groups: []string{}, Policy: &kit.LanePolicy{IdleMessage: "run"}}))
+			send(protocol.RequestBytes(1, "session.open", kit.OpenRequest{Name: "parent/child@local", Groups: []string{}, Policy: &kit.LanePolicy{}}))
 			_ = next()
 			delivery := kit.DeliveryRequest{MessageID: "m", RunID: "g/1", Body: "authorized message", From: kit.DeliverySource{SessionID: "parent@local", Product: "claude-peer", Groups: []string{"g"}}}
 			send(protocol.RequestBytes(2, "message.deliver", delivery))
