@@ -73,8 +73,9 @@ func ValidateTypedArguments(open kit.OpenOptions) error {
 		if field != "" {
 			return fmt.Errorf("argument conflicts with typed field %s", field)
 		}
-		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) {
-			// As above, a required value is data even when it looks like a flag.
+		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) && arguments[index+1] != "--" {
+			// As in LaunchPlan, a required value is data even when it looks like
+			// a flag, while "--" still ends the options.
 			index++
 		}
 	}

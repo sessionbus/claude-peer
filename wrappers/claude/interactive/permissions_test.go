@@ -154,6 +154,7 @@ func TestTypedArgumentsKeepOperandsAndRequiredValues(t *testing.T) {
 	for _, arguments := range [][]string{
 		{"--", "--model", "haiku", "--effort=low", "--permission-mode", "plan", "--dangerously-skip-permissions"},
 		{"--append-system-prompt", "--model"},
+		{"--append-system-prompt", "--", "--model", "haiku"},
 	} {
 		typed.Arguments = arguments
 		if err := ValidateTypedArguments(typed); err != nil {
