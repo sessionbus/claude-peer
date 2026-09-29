@@ -31,3 +31,17 @@ This prerelease is available now for testing; publication does not mark the rema
 
 The [v0.5.1 notes](v0.5.1.md) describe the coordinated tracing release and its
 daemon compatibility requirements.
+
+## Maintenance: native argument grammar
+
+Whenever native Claude's argument grammar is reviewed or changes, re-check the typed-field and managed-tool guards with an isolated, offline probe:
+- Use a throwaway `HOME` and `CLAUDE_CONFIG_DIR` and a fake API key.
+- Point `ANTHROPIC_BASE_URL` at an unbound local port.
+- Set `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`.
+- For strict isolation, also run the probe under an enforced network restriction, such as a network namespace. The API URL and these settings alone do not block every outbound connection.
+
+Run each argument list under `timeout 20` (GNU coreutils; on macOS, install coreutils and use `gtimeout 20`), for example `timeout 20 claude -p --append-system-prompt -- --permission-mode bogusmode`:
+- If native exits at once with a validation error for `bogusmode`, the `--` after the value-taking option was consumed as its value and parsing continued.
+- If `timeout` ends it with exit status 124, the arguments were treated as a prompt. The CLI keeps retrying the unreachable API until then.
+
+Update the option table in `wrappers/claude/interactive/launch.go` and its tests to match. Record the probe commands, the native version and the observed results in the pull request that makes the change. Native versions are provenance, not a supported-version list.
