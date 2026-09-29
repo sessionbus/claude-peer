@@ -12,11 +12,11 @@ Install native Claude and Sessionbus first using your normal home, login and PAT
 curl -fsSL https://raw.githubusercontent.com/sessionbus/claude-peer/main/scripts/install-claude.sh | sh
 ```
 
-This repository is being separated from the original peers tree. No independent
-release is published yet; use a reviewed archive built from source until release.
-The installer retains checksum verification and latest stable/development selection;
-it does not silently fetch another product. Older published installers remain at
-[the original repository](https://github.com/sessionbus/codex-peer).
+Stable releases are published from signed `vX.Y.Z` tags; see
+[docs/releases](docs/releases). The installer installs the latest stable release
+by default (set `SESSIONBUS_VERSION` to pin one), verifies checksums, and does not
+fetch another product. v0.5.9 and later require Sessionbus v0.5.9. Installers from
+the earlier combined peers repository are not used for these releases.
 
 See [the Claude guide](claude/README.md) for full install/update/remove instructions,
 private aliases, native flags, permissions, resume, identity and lifecycle behavior.
@@ -36,8 +36,9 @@ scripts/package-claude ./dist
 ```
 
 Builds require Go 1.24 or newer; target installations do not need Go. Packaging
-supports Linux/macOS amd64/arm64. RELEASE_VERSION and the Claude manifest agree;
-this extraction does not bump either. Publication remains held during validation.
+supports Linux/macOS amd64/arm64. RELEASE_VERSION and the Claude manifest agree
+with the stable tag. Stable releases are published from signed `vX.Y.Z` tags;
+see [docs/releases](docs/releases).
 
 Shared support uses the exact peer-common version/checksum in go.mod/go.sum.
 Native Claude versions are not pinned: users routinely update native clients.
