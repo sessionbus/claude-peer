@@ -22,13 +22,44 @@ import (
 
 func TestNativeArgumentsPreserveCallerSuffix(t *testing.T) {
 	var request kit.OpenRequest
-	if err := json.Unmarshal([]byte(`{"name":"parent/child@local","resume_session_id":"native-id","open":{"model":"native-model","permission_mode":"default","reasoning_effort":"high","arguments":["--model","last-model","--","literal"]}}`), &request); err != nil {
+	if err := json.Unmarshal([]byte(`{"name":"parent/child@local","resume_session_id":"native-id","open":{"model":"native-model","permission_mode":"default","reasoning_effort":"high","arguments":["--fallback-model","last-model","--","--model","literal"]}}`), &request); err != nil {
+		t.Fatal(err)
+	}
+	if err := interactive.ValidateTypedArguments(request.Open); err != nil {
 		t.Fatal(err)
 	}
 	actual := launchArguments(request, "/installed plugin", "/owned settings")
-	expected := []string{"--allowedTools", interactive.PublicTool, "--plugin-dir", "/installed plugin", "-p", "--input-format", "stream-json", "--output-format", "stream-json", "--verbose", "--replay-user-messages", "--settings", "/owned settings", "--name", "parent/child", "--resume", "native-id", "--permission-mode", "default", "--model", "native-model", "--effort", "high", "--model", "last-model", "--", "literal"}
+	expected := []string{"--allowedTools", interactive.PublicTool, "--plugin-dir", "/installed plugin", "-p", "--input-format", "stream-json", "--output-format", "stream-json", "--verbose", "--replay-user-messages", "--settings", "/owned settings", "--name", "parent/child", "--resume", "native-id", "--permission-mode", "default", "--model", "native-model", "--effort", "high", "--fallback-model", "last-model", "--", "--model", "literal"}
 	if !reflect.DeepEqual(actual, expected) {
 		t.Fatalf("argv %#v", actual)
+	}
+}
+func TestNativeArgumentsForwardUntypedSelectors(t *testing.T) {
+	var request kit.OpenRequest
+	request.Open.Arguments = []string{"--model", "haiku", "--effort=low", "--permission-mode", "plan", "--dangerously-skip-permissions"}
+	if err := interactive.ValidateTypedArguments(request.Open); err != nil {
+		t.Fatal(err)
+	}
+	actual := launchArguments(request, "/installed plugin", "/owned settings")
+	if suffix := actual[len(actual)-len(request.Open.Arguments):]; !reflect.DeepEqual(suffix, request.Open.Arguments) {
+		t.Fatalf("untyped suffix changed: %q", actual)
+	}
+}
+func TestOpenRejectsTypedArgumentConflictBeforeLifetime(t *testing.T) {
+	// A regressed guard must fail on native lookup, not start a real Claude.
+	t.Setenv("PATH", t.TempDir())
+	p := New(t.TempDir())
+	var request kit.OpenRequest
+	if err := json.Unmarshal([]byte(`{"name":"parent/child@local","open":{"model":"sonnet","arguments":["--model","haiku"]}}`), &request); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := p.Open(context.Background(), request); err == nil || err.Error() != "argument conflicts with typed field model" {
+		t.Fatalf("typed model conflict: %v", err)
+	}
+	p.mu.Lock()
+	defer p.mu.Unlock()
+	if p.ctx != nil || p.endpoint != nil || p.closing {
+		t.Fatalf("rejected launch changed lifetime: ctx=%v endpoint=%v closing=%v", p.ctx, p.endpoint, p.closing)
 	}
 }
 func TestNativeArgumentsKeepGrantWithBypass(t *testing.T) {

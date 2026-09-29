@@ -4,8 +4,11 @@ package interactive
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 	"unicode"
+
+	kit "github.com/antst/sessionbus/bus/sdk/go"
 )
 
 var errManagedToolDenied = errors.New("Claude launch arguments cannot deny the managed Sessionbus tool")
@@ -41,6 +44,38 @@ func ValidateManagedToolArguments(arguments []string) error {
 		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) {
 			// The first value of a native value-taking option remains data even
 			// when it begins with a dash. Do not reinterpret it as our guard.
+			index++
+		}
+	}
+	return nil
+}
+
+// ValidateTypedArguments rejects a raw native selector for a field the lane
+// request already types, because the later raw value can override that choice.
+// Untyped selectors and operands after the terminator remain passthrough.
+func ValidateTypedArguments(open kit.OpenOptions) error {
+	arguments := open.Arguments
+	for index := 0; index < len(arguments); index++ {
+		argument := arguments[index]
+		if argument == "--" {
+			break
+		}
+		option, _, attached := strings.Cut(argument, "=")
+		field := ""
+		switch {
+		case option == "--model" && open.Model != "":
+			field = "model"
+		case option == "--effort" && open.ReasoningEffort != "":
+			field = "reasoning_effort"
+		case (option == "--permission-mode" || argument == "--dangerously-skip-permissions") && open.PermissionMode != "":
+			field = "permission_mode"
+		}
+		if field != "" {
+			return fmt.Errorf("argument conflicts with typed field %s", field)
+		}
+		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) && arguments[index+1] != "--" {
+			// As in LaunchPlan, a required value is data even when it looks like
+			// a flag, while "--" still ends the options.
 			index++
 		}
 	}
