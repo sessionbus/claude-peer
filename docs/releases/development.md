@@ -34,8 +34,14 @@ daemon compatibility requirements.
 
 ## Maintenance: native argument grammar
 
-Whenever native Claude's argument grammar is reviewed or changes, re-check the typed-field and managed-tool guards with an isolated, no-network probe. Use a throwaway `HOME` and `CLAUDE_CONFIG_DIR`, a fake API key, and `ANTHROPIC_BASE_URL` pointed at a dead local port, then run argument lists such as `claude -p --append-system-prompt -- --permission-mode bogusmode`:
-- If native rejects `bogusmode` with a validation error, the `--` after the value-taking option was consumed as its value and parsing continued.
-- If the command times out against the dead endpoint, the arguments were treated as a prompt.
+Whenever native Claude's argument grammar is reviewed or changes, re-check the typed-field and managed-tool guards with an isolated, offline probe:
+- Use a throwaway `HOME` and `CLAUDE_CONFIG_DIR` and a fake API key.
+- Point `ANTHROPIC_BASE_URL` at an unbound local port.
+- Set `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`.
+- For strict isolation, also run the probe under an enforced network restriction, such as a network namespace. The API URL and these settings alone do not block every outbound connection.
 
-Update the option table in `wrappers/claude/interactive/launch.go` and its tests to match. Native versions are provenance, not a supported-version list.
+Run each argument list under `timeout 20`, for example `timeout 20 claude -p --append-system-prompt -- --permission-mode bogusmode`:
+- If native exits at once with a validation error for `bogusmode`, the `--` after the value-taking option was consumed as its value and parsing continued.
+- If `timeout` ends it with exit status 124, the arguments were treated as a prompt. The CLI keeps retrying the unreachable API until then.
+
+Update the option table in `wrappers/claude/interactive/launch.go` and its tests to match. Record the probe commands, the native version and the observed results in the pull request that makes the change. Native versions are provenance, not a supported-version list.
