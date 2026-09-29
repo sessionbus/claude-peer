@@ -36,8 +36,9 @@ scripts/package-claude ./dist
 ```
 
 Builds require Go 1.24 or newer; target installations do not need Go. Packaging
-supports Linux/macOS amd64/arm64. RELEASE_VERSION and the Claude manifest agree;
-this extraction does not bump either. Publication remains held during validation.
+supports Linux/macOS amd64/arm64. RELEASE_VERSION and the Claude manifest agree
+with the stable tag. Stable releases are published from signed `vX.Y.Z` tags;
+see [docs/releases](docs/releases).
 
 Shared support uses the exact peer-common version/checksum in go.mod/go.sum.
 Native Claude versions are not pinned: users routinely update native clients.
