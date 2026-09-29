@@ -40,7 +40,7 @@ Whenever native Claude's argument grammar is reviewed or changes, re-check the t
 - Set `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1`.
 - For strict isolation, also run the probe under an enforced network restriction, such as a network namespace. The API URL and these settings alone do not block every outbound connection.
 
-Run each argument list under `timeout 20`, for example `timeout 20 claude -p --append-system-prompt -- --permission-mode bogusmode`:
+Run each argument list under `timeout 20` (GNU coreutils; on macOS, install coreutils and use `gtimeout 20`), for example `timeout 20 claude -p --append-system-prompt -- --permission-mode bogusmode`:
 - If native exits at once with a validation error for `bogusmode`, the `--` after the value-taking option was consumed as its value and parsing continued.
 - If `timeout` ends it with exit status 124, the arguments were treated as a prompt. The CLI keeps retrying the unreachable API until then.
 
