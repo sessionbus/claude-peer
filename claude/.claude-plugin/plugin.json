@@ -1,6 +1,6 @@
 {
   "name": "sessionbus",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "description": "Claude peer sessions, Claude lanes and Sessionbus communication through one Go integration.",
   "author": {
     "name": "Sessionbus contributors"

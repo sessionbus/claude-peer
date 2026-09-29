@@ -28,7 +28,7 @@ func ValidateManagedToolArguments(arguments []string) error {
 			values := []string(nil)
 			if attached {
 				values = append(values, attachedValue)
-			} else if index+1 < len(arguments) && arguments[index+1] != "--" {
+			} else if index+1 < len(arguments) {
 				index++
 				values = append(values, arguments[index])
 				for index+1 < len(arguments) && !claudeOptionLike(arguments[index+1]) {
@@ -41,10 +41,10 @@ func ValidateManagedToolArguments(arguments []string) error {
 			}
 			continue
 		}
-		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) && arguments[index+1] != "--" {
+		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) {
 			// The first value of a native value-taking option remains data even
-			// when it begins with a dash. Do not reinterpret it as our guard.
-			// "--" still ends the options, as in LaunchPlan.
+			// when it begins with a dash or is "--": native Claude consumes it as
+			// the value and keeps parsing options.
 			index++
 		}
 	}
@@ -74,9 +74,9 @@ func ValidateTypedArguments(open kit.OpenOptions) error {
 		if field != "" {
 			return fmt.Errorf("argument conflicts with typed field %s", field)
 		}
-		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) && arguments[index+1] != "--" {
-			// As in LaunchPlan, a required value is data even when it looks like
-			// a flag, while "--" still ends the options.
+		if !attached && claudeOptionTakesValue(option) && index+1 < len(arguments) {
+			// A required value is data even when it looks like a flag or is
+			// "--", which native Claude consumes as the value.
 			index++
 		}
 	}
