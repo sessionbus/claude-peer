@@ -16,6 +16,8 @@ func TestManagedToolRejectsExactNativeDeny(t *testing.T) {
 		{"--disallowed-tools=Bash," + PublicTool},
 		{"--disallowedTools", "Bash(git status)", PublicTool, "--model", "sonnet"},
 		{"--disallowedTools", "Read", "--disallowed-tools", "Bash(git status) " + PublicTool},
+		{"--system-prompt", "--", "--disallowedTools", PublicTool},
+		{"--disallowedTools", "--", PublicTool},
 	} {
 		if err := ValidateManagedToolArguments(arguments); err == nil {
 			t.Fatalf("exact managed deny accepted: %q", arguments)
@@ -35,8 +37,6 @@ func TestManagedToolPreservesOtherNativePolicyAndBoundaries(t *testing.T) {
 		{"--allowedTools", "--disallowedTools", PublicTool},
 		{"--disallowedTools", "Read", "--model", PublicTool},
 		{"--", "--disallowedTools", PublicTool},
-		{"--system-prompt", "--", "--disallowedTools", PublicTool},
-		{"--disallowedTools", "--", PublicTool},
 	} {
 		if err := ValidateManagedToolArguments(arguments); err != nil {
 			t.Fatalf("native arguments %q rejected: %v", arguments, err)
@@ -124,6 +124,8 @@ func TestTypedArgumentsRejectRawSelectors(t *testing.T) {
 		{"permission_mode", kit.OpenOptions{PermissionMode: "default"}, []string{"--permission-mode=plan"}},
 		{"permission_mode", kit.OpenOptions{PermissionMode: "default"}, []string{"--dangerously-skip-permissions"}},
 		{"permission_mode", kit.OpenOptions{PermissionMode: "bypassPermissions"}, []string{"--dangerously-skip-permissions"}},
+		{"model", kit.OpenOptions{Model: "sonnet"}, []string{"--append-system-prompt", "--", "--model", "haiku"}},
+		{"permission_mode", kit.OpenOptions{PermissionMode: "default"}, []string{"--append-system-prompt", "--", "--dangerously-skip-permissions"}},
 	} {
 		tc.open.Arguments = append([]string{"--verbose"}, tc.arguments...)
 		err := ValidateTypedArguments(tc.open)
@@ -154,7 +156,6 @@ func TestTypedArgumentsKeepOperandsAndRequiredValues(t *testing.T) {
 	for _, arguments := range [][]string{
 		{"--", "--model", "haiku", "--effort=low", "--permission-mode", "plan", "--dangerously-skip-permissions"},
 		{"--append-system-prompt", "--model"},
-		{"--append-system-prompt", "--", "--model", "haiku"},
 	} {
 		typed.Arguments = arguments
 		if err := ValidateTypedArguments(typed); err != nil {
