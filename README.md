@@ -49,7 +49,11 @@ and [preservation inventory](docs/migration/PRESERVED-FILES.json) track separati
 Historical behavior and limitations remain in [Claude facts](docs/products/claude.md)
 and [implementation records](docs/designs/claude-0.5.0/GO-MIGRATION.md).
 The historical Node reference and held skills stay documentation only and are not
-packaged or activated. Fresh extracted-build validation remains pending.
+packaged or activated. Field-free installed validation ran on the permanent
+development host (Sessionbus daemon build c9792c31, the v0.5.9 runtime) with
+claude-peer 9cfaa6df, which has the same runtime as v0.5.9; the typed-argument
+and managed-tool boundary findings from earlier builds were fixed there (#5, #6).
+This is scoped evidence, not blanket acceptance.
 
 ## Delivery and presence
 
