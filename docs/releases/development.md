@@ -31,3 +31,11 @@ This prerelease is available now for testing; publication does not mark the rema
 
 The [v0.5.1 notes](v0.5.1.md) describe the coordinated tracing release and its
 daemon compatibility requirements.
+
+## Maintenance: native argument grammar
+
+Whenever native Claude's argument grammar is reviewed or changes, re-check the typed-field and managed-tool guards with an isolated, no-network probe. Use a throwaway `HOME` and `CLAUDE_CONFIG_DIR`, a fake API key, and `ANTHROPIC_BASE_URL` pointed at a dead local port, then run argument lists such as `claude -p --append-system-prompt -- --permission-mode bogusmode`:
+- If native rejects `bogusmode` with a validation error, the `--` after the value-taking option was consumed as its value and parsing continued.
+- If the command times out against the dead endpoint, the arguments were treated as a prompt.
+
+Update the option table in `wrappers/claude/interactive/launch.go` and its tests to match. Native versions are provenance, not a supported-version list.
