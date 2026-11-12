@@ -81,7 +81,7 @@ func (w *wire) write(t *testing.T, b []byte) {
 	w.writes.Lock()
 	defer w.writes.Unlock()
 	if _, err := w.fd.Write(b); err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
 }
 func (w *wire) request(t *testing.T, method string, params any) {

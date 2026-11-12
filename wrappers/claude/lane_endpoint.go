@@ -13,6 +13,7 @@ import (
 	"sync"
 
 	"github.com/sessionbus/claude-peer/wrappers/claude/interactive"
+	"github.com/sessionbus/peer-common/mcp"
 )
 
 type laneEndpoint struct {
@@ -183,7 +184,14 @@ func (b *laneBackend) Action(ctx context.Context, action string, args json.RawMe
 	if _, _, err := b.owner.current(); err != nil {
 		return nil, err
 	}
-	return b.owner.caller.Action(ctx, action, args)
+	b.owner.mu.Lock()
+	cwd := b.owner.cwd
+	b.owner.mu.Unlock()
+	bound, err := mcp.BindTransferPaths(action, args, cwd)
+	if err != nil {
+		return nil, err
+	}
+	return b.owner.caller.Action(ctx, action, bound)
 }
 func (b *laneBackend) End() {
 	b.cancel()
