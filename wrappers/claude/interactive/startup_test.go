@@ -158,6 +158,7 @@ func TestStartupRegistryOwnProcessAndBoundedNativeFile(t *testing.T) {
 	r := &startupReader{pid: 42, path: path, process: process, inspect: func(int) (startupProcess, error) { return process, nil }}
 	row := startupRow()
 	row.Socket = socket
+	row.Cwd = t.TempDir()
 	write := func(value startupIdentity) {
 		t.Helper()
 		body, _ := json.Marshal(value)

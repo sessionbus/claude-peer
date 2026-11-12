@@ -20,7 +20,8 @@ launch's groups for an integrated child.
 
 Use `mcp__plugin_sessionbus_sessionbus__sessionbus` with `{action, arguments}`. Its advertised
 `action` enum comes from the pinned public kit: list, send, spawn, describe,
-trace, run, start, wait, status, ack, interrupt, close and forget. Use the actual
+trace, run, start, wait, status, ack, interrupt, close, forget, transfer.offer,
+transfer.request, transfer.accept, transfer.cancel and transfer.status. Use the actual
 tool and daemon schemas for each arguments object; do not invent convenience methods.
 
 Call `list` to discover a peer before selecting an ambiguous name. Use the

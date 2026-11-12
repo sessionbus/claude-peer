@@ -14,14 +14,16 @@ import (
 
 	kit "github.com/antst/sessionbus/bus/sdk/go"
 	"github.com/antst/sessionbus/bus/sdk/go/protocol"
+	"github.com/sessionbus/peer-common/mcp"
 )
 
 const reconnectInterval = 2 * time.Second
 
 type resident struct {
-	ctx     context.Context
-	cancel  context.CancelFunc
-	changed chan struct{}
+	ctx       context.Context
+	cancel    context.CancelFunc
+	changed   chan struct{}
+	transfers *kit.Transfers
 }
 
 type reportWaiter struct {
@@ -47,6 +49,7 @@ type Owner struct {
 	pendingReports       int
 	publishers, handlers sync.WaitGroup
 	startupCancel        context.CancelFunc
+	registryRead         func() (startupIdentity, error)
 	startupWork          sync.WaitGroup
 	hookObserved         bool
 }
@@ -131,9 +134,14 @@ func (o *Owner) beginIdentityLocked(event NativeReport) (<-chan error, error) {
 	}
 	created := false
 	if o.identity == nil || o.identity.SessionID != event.ID {
+		transfers, err := kit.NewConnectionTransfers(nil)
+		if err != nil {
+			o.mu.Unlock()
+			return nil, err
+		}
 		o.withdrawLocked(unavailable())
 		ctx, cancel := context.WithCancel(context.Background())
-		o.resident = &resident{ctx: ctx, cancel: cancel, changed: make(chan struct{}, 1)}
+		o.resident = &resident{ctx: ctx, cancel: cancel, changed: make(chan struct{}, 1), transfers: transfers}
 		o.publishers.Add(1)
 		go o.publish(o.resident)
 		created = true
@@ -167,6 +175,7 @@ func waitReconnect(ctx context.Context) bool {
 
 func (o *Owner) publish(r *resident) {
 	defer o.publishers.Done()
+	defer r.transfers.CloseConnectionGeneration(nil)
 	var c *kit.Connection
 	for {
 		o.mu.Lock()
@@ -195,11 +204,11 @@ func (o *Owner) publish(r *resident) {
 				return
 			}
 			o.connection = c
-			o.caller = kit.NewCaller(func(ctx context.Context, method string, params any) (json.RawMessage, error) {
+			o.caller = kit.NewCallerWithTransfers(func(ctx context.Context, method string, params any) (json.RawMessage, error) {
 				var result json.RawMessage
 				err := attempt.Call(ctx, method, params, &result)
 				return result, err
-			})
+			}, r.transfers)
 			o.mu.Unlock()
 			close(published)
 		}
@@ -222,8 +231,7 @@ func (o *Owner) publish(r *resident) {
 			waiter.submitted = true
 		}
 		o.mu.Unlock()
-		var result json.RawMessage
-		err := c.CallObserved(r.ctx, "session.hello", identity, &result, func() error {
+		err := r.transfers.HelloObserved(r.ctx, r.ctx, c, identity, func() error {
 			o.mu.Lock()
 			defer o.mu.Unlock()
 			if !o.ended && o.resident == r && o.connection == c && o.generation == generation {
@@ -254,6 +262,7 @@ func (o *Owner) publish(r *resident) {
 		if err != nil {
 			o.clearConnection(r, c)
 			_ = c.Close()
+			r.transfers.CloseConnectionGeneration(c)
 			c = nil
 			if r.ctx.Err() != nil || !o.retry(r.ctx) {
 				return
@@ -271,6 +280,7 @@ func (o *Owner) publish(r *resident) {
 			return
 		case <-c.Done():
 			o.clearConnection(r, c)
+			r.transfers.CloseConnectionGeneration(c)
 			c = nil
 			if !o.retry(r.ctx) {
 				return
@@ -387,6 +397,7 @@ func (o *Owner) Action(ctx context.Context, action string, args json.RawMessage)
 		return nil, unavailable()
 	}
 	caller, identityContext, connection := o.caller, o.resident.ctx, o.connection
+	sessionID, socket, read := o.admitted.SessionID, o.nativeSocket, o.registryRead
 	o.mu.Unlock()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
@@ -398,7 +409,26 @@ func (o *Owner) Action(ctx context.Context, action string, args json.RawMessage)
 	if err := ctx.Err(); err != nil {
 		return nil, err
 	}
-	result, err := caller.Action(ctx, action, args)
+	var cwd string
+	if action == "transfer.offer" || action == "transfer.request" || action == "transfer.accept" {
+		if read != nil {
+			row, err := read()
+			if errors.Is(err, errStartupParentEnded) {
+				return nil, unavailable()
+			}
+			if err == nil && row.SessionID == sessionID && row.Socket == socket {
+				cwd = row.Cwd
+			}
+		}
+	}
+	bound, err := mcp.BindTransferPaths(action, args, cwd)
+	if err != nil {
+		return nil, err
+	}
+	if err := ctx.Err(); err != nil {
+		return nil, err
+	}
+	result, err := caller.Action(ctx, action, bound)
 	if err != nil {
 		o.mu.Lock()
 		lost := o.connection != connection || o.admitted == nil || connection.Context().Err() != nil
@@ -411,6 +441,9 @@ func (o *Owner) Action(ctx context.Context, action string, args json.RawMessage)
 }
 
 func (o *Owner) handle(resident *resident, c *kit.Connection, r *kit.Request) {
+	if resident.transfers.HandleConnectionRequest(c, r) {
+		return
+	}
 	o.mu.Lock()
 	if o.connection != c || o.resident != resident || o.ended {
 		o.mu.Unlock()
@@ -442,6 +475,11 @@ func (o *Owner) handle(resident *resident, c *kit.Connection, r *kit.Request) {
 	}
 	o.handlers.Add(1)
 	o.mu.Unlock()
+	request, delivery := r.Params.(*protocol.DeliveryRequest)
+	var project func(context.Context, *kit.DeliveryRequest) error
+	if r.Method == "message.deliver" && captured != nil && delivery {
+		project = resident.transfers.ProjectDelivery(c, request)
+	}
 	go func() {
 		defer o.handlers.Done()
 		var err error
@@ -451,10 +489,17 @@ func (o *Owner) handle(resident *resident, c *kit.Connection, r *kit.Request) {
 		case captured == nil:
 			err = c.Result(r, kit.DeliveryReceipt{Disposition: "rejected", Reason: "unpublished_before_submission"})
 		default:
-			request, ok := r.Params.(*protocol.DeliveryRequest)
-			if !ok {
+			if !delivery {
 				_ = c.Close()
 				return
+			}
+			if project != nil {
+				if projectErr := project(captured.Context, request); projectErr != nil {
+					if err := c.Result(r, kit.DeliveryReceipt{Disposition: "rejected", Reason: "identity_unavailable_before_submission"}); err != nil {
+						_ = c.Close()
+					}
+					return
+				}
 			}
 			result, deliveryErr := o.deliver(*captured, *request)
 			if deliveryErr != nil {

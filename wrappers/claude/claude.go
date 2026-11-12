@@ -26,6 +26,7 @@ type Wrapper struct {
 	mu              sync.Mutex
 	caller          *kit.Caller
 	root            string
+	cwd             string
 	cancel          context.CancelFunc
 	ctx             context.Context
 	endpoint        *laneEndpoint
@@ -108,6 +109,16 @@ func (p *Wrapper) Open(ctx context.Context, r kit.OpenRequest) (result kit.OpenR
 			return result, err
 		}
 	}
+	// Retain the native launch directory without cleaning symlink/.. spelling.
+	// child.Dir below keeps its existing value and native launch semantics.
+	base := cwd
+	if !filepath.IsAbs(base) {
+		parent, getwdErr := os.Getwd()
+		if getwdErr != nil {
+			return result, getwdErr
+		}
+		base = strings.TrimSuffix(parent, string(filepath.Separator)) + string(filepath.Separator) + base
+	}
 	env := interactive.Environment(os.Environ())
 	path, err := interactive.NativePath(env, cwd)
 	if err != nil {
@@ -142,6 +153,7 @@ func (p *Wrapper) Open(ctx context.Context, r kit.OpenRequest) (result kit.OpenR
 	}
 	p.mu.Lock()
 	p.native = child
+	p.cwd = base
 	p.processDone = make(chan struct{})
 	p.mu.Unlock()
 	close(p.spawnReady)

@@ -29,6 +29,7 @@ type startupIdentity struct {
 	Kind       string `json:"kind"`
 	Entrypoint string `json:"entrypoint"`
 	Socket     string `json:"messagingSocketPath"`
+	Cwd        string `json:"cwd,omitempty"`
 }
 
 type startupProcess struct {
@@ -145,6 +146,9 @@ func (o *Owner) startStartupObservation(read func() (startupIdentity, error), in
 		o.mu.Unlock()
 		return
 	}
+	// Keep the same bounded reader for cwd lookup, even after hooks take over
+	// identity publication. A tool call never publishes the registry identity.
+	o.registryRead = read
 	ctx, cancel := context.WithCancel(context.Background())
 	o.startupCancel = cancel
 	o.startupWork.Add(1)
